@@ -1,0 +1,20 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.6)
+  - TransitionButton (0.5.3)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - TransitionButton
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - TransitionButton
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
+
+PODFILE CHECKSUM: eff5af5ce2b7c793a7515819dd0fca6b673cd28a
+
+COCOAPODS: 1.8.4
