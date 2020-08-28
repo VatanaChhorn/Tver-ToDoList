@@ -29,6 +29,8 @@ class ToDoListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! ToDoListTableViewCell
         cell.listLabel.text = "Fucking crazy!!"
+        cell.configure(stringOfRow: String(indexPath.row), stringOfLabel: "Fucking crazy!!")
+        cell.delegate = self
         return cell
     }
 
@@ -77,4 +79,12 @@ class ToDoListTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension ToDoListTableViewController: todocelldelegate {
+    func buttonDidPressed() {
+        print("triggered")
+    }
+    
+    
 }
