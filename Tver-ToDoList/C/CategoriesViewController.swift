@@ -9,6 +9,8 @@ import UIKit
 import IQKeyboardManagerSwift
 
 class CategoriesViewController: UIViewController, UITableViewDelegate {
+
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttomView: UIView!
     @IBOutlet weak var addButton: UIButton!
@@ -29,6 +31,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+     
         
         // MARK: - Navigationbar configuration
         
@@ -84,6 +87,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         
         let settingButton = UIButton(type: .system)
         settingButton.setImage(#imageLiteral(resourceName: "Profile Picture").withRenderingMode(.alwaysOriginal), for: .normal)
+        settingButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         settingButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         settingButton.layer.cornerRadius = 25
         settingButton.layer.masksToBounds = true
@@ -98,6 +102,10 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
 
     }
 
+    @objc func buttonAction(sender: UIButton!) {
+        performSegue(withIdentifier: "settingControllerSegue", sender: self)
+     }
+    
 }
 
 extension CategoriesViewController: UITableViewDataSource {
@@ -119,3 +127,4 @@ extension CategoriesViewController: UITableViewDataSource {
     
     
 }
+

@@ -16,6 +16,7 @@
 		352E46B124F4E56C006E6DC4 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352E46B024F4E56C006E6DC4 /* Onboarding.storyboard */; };
 		3572B8E224F50B6800C9C7F7 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3572B8E124F50B6800C9C7F7 /* Onboarding.swift */; };
 		3596A79F24F50503007569FF /* setupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596A79E24F50503007569FF /* setupProfileViewController.swift */; };
+		35AB1F0124F95960008D7304 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB1F0024F95960008D7304 /* SettingViewController.swift */; };
 		35AB451924F90E9A00254A6D /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB451824F90E9A00254A6D /* CategoriesViewController.swift */; };
 		35AB451C24F90ED100254A6D /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB451A24F90ED100254A6D /* ToDoListViewController.swift */; };
 		35E1BE1B24F7D768006C5360 /* SF-Compact-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 35E1BE1A24F7D768006C5360 /* SF-Compact-Rounded-Medium.otf */; };
@@ -37,6 +38,7 @@
 		352E46B024F4E56C006E6DC4 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		3572B8E124F50B6800C9C7F7 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		3596A79E24F50503007569FF /* setupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setupProfileViewController.swift; sourceTree = "<group>"; };
+		35AB1F0024F95960008D7304 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		35AB451824F90E9A00254A6D /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoriesViewController.swift; path = "Tver-ToDoList/C/CategoriesViewController.swift"; sourceTree = SOURCE_ROOT; };
 		35AB451A24F90ED100254A6D /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
 		35E1BE1A24F7D768006C5360 /* SF-Compact-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Rounded-Medium.otf"; sourceTree = "<group>"; };
@@ -109,9 +111,10 @@
 		352E46B424F4E580006E6DC4 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				35AB1F0024F95960008D7304 /* SettingViewController.swift */,
+				35AB451824F90E9A00254A6D /* CategoriesViewController.swift */,
 				3572B8E124F50B6800C9C7F7 /* Onboarding.swift */,
 				3596A79E24F50503007569FF /* setupProfileViewController.swift */,
-				35AB451824F90E9A00254A6D /* CategoriesViewController.swift */,
 				35AB451A24F90ED100254A6D /* ToDoListViewController.swift */,
 				35E1BE1C24F8071E006C5360 /* ToDoListTableViewController.swift */,
 				35E1BE1E24F807FD006C5360 /* ToDoListTableViewCell.swift */,
@@ -276,6 +279,7 @@
 				3572B8E224F50B6800C9C7F7 /* Onboarding.swift in Sources */,
 				35AB451924F90E9A00254A6D /* CategoriesViewController.swift in Sources */,
 				3596A79F24F50503007569FF /* setupProfileViewController.swift in Sources */,
+				35AB1F0124F95960008D7304 /* SettingViewController.swift in Sources */,
 				35E1BE1F24F807FD006C5360 /* ToDoListTableViewCell.swift in Sources */,
 				352E469B24F4E50C006E6DC4 /* AppDelegate.swift in Sources */,
 				352E46A424F4E50C006E6DC4 /* ContentView.swift in Sources */,
