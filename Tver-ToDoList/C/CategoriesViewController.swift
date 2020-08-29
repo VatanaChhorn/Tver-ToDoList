@@ -11,9 +11,13 @@ import IQKeyboardManagerSwift
 class CategoriesViewController: UIViewController, UITableViewDelegate {
 
     
+    @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView1: UITableView!
     @IBOutlet weak var buttomView: UIView!
     @IBOutlet weak var addButton: UIButton!
+    
+    var menuItem = ["Today", "All"]
     
     var topbarHeight: CGFloat {
         if #available(iOS 13.0, *) {
@@ -26,23 +30,40 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
       }
     
     var dynamicColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView1.delegate = self
+        tableView1.dataSource = self
+        tableView1.isScrollEnabled = false
+        
+        //First tableView Configure
+        
+        let bottomBorder = CAShapeLayer()
+            let bottomPath = UIBezierPath()
+            bottomPath.move(to: CGPoint(x: 0, y: tableView1.frame.height))
+            bottomPath.addLine(to: CGPoint(x: tableView1.frame.width, y: tableView1.frame.height))
+            bottomBorder.path = bottomPath.cgPath
+            bottomBorder.strokeColor = UIColor.gray.cgColor
+        bottomBorder.lineWidth = 0.5
+            bottomBorder.fillColor = UIColor.gray.cgColor
+            tableView1.layer.addSublayer(bottomBorder)
      
+        // Buttom View Configuration
+        
+        initialButtomView()
         
         // MARK: - Navigationbar configuration
         
         setupNavigationbar()
         
         // MARK: - button configuration
-        buttomView.layer.masksToBounds = true
-        buttomView.layer.cornerRadius = 15
-        buttomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-        buttomView.layer.borderWidth = 0.5
-        buttomView.layer.borderColor = dynamicColor.cgColor
+   
         
         addButton.layer.masksToBounds = true
         addButton.layer.cornerRadius = 30
@@ -51,8 +72,35 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         let largeBoldDoc = UIImage(systemName: "plus", withConfiguration: largeConfig)
 
         addButton.setImage(largeBoldDoc, for: .normal)
+        
+        // MARK: - keyboard configure
+        self.hideKeyboardWhenTappedAround()
+        
+
+    
+  
     }
     
+    // MARK: - Add button click buttom view configuration
+    
+    public func addButtonClickedView() {
+        buttomView.layer.masksToBounds = true
+        buttomView.layer.cornerRadius = 15
+        buttomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        buttomView.layer.borderWidth = 0.5
+        buttomView.layer.borderColor = dynamicColor.cgColor
+        
+        categoryTextField.isHidden = false
+        categoryTextField.becomeFirstResponder()
+    }
+    
+    // MARK: - ViewDidLoad buttom view configuration
+    
+    func initialButtomView() {
+        self.categoryTextField.isHidden = true
+        self.buttomView.backgroundColor = .clear
+        self.buttomView.layer.borderColor = UIColor.clear.cgColor
+    }
     
     // MARK: - Customize Navigation Bar
     
@@ -101,30 +149,73 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
 
 
     }
+    
+    // MARK: - Button Action
 
     @objc func buttonAction(sender: UIButton!) {
         performSegue(withIdentifier: "settingControllerSegue", sender: self)
      }
+    
+    @IBAction func addButtonAction(_ sender: Any) {
+        addButtonClickedView()
+        self.tableView.isUserInteractionEnabled = false
+    }
     
 }
 
 extension CategoriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        
+        if tableView == self.tableView1 {
+            return 2
+        } else {
+            return 5
+        }
+   
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Hell"
-        return cell
+        
+        if tableView == self.tableView1 {
+            let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
+            cell1.textLabel?.text = menuItem[indexPath.row]
+            return cell1
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+          
+            cell.textLabel?.text = "Hell"
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "performTodolistSegue", sender: self)
-        print("row selected")
+        print(indexPath.row)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
     
     
 }
 
+
+// MARK: - Hide Keyboard When User Tapped Around
+
+extension CategoriesViewController {
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CategoriesViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+        self.initialButtomView()
+        self.tableView.isUserInteractionEnabled = true
+        
+    }
+}

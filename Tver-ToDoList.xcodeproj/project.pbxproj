@@ -113,11 +113,11 @@
 			children = (
 				35AB1F0024F95960008D7304 /* SettingViewController.swift */,
 				35AB451824F90E9A00254A6D /* CategoriesViewController.swift */,
+				35AB451A24F90ED100254A6D /* ToDoListViewController.swift */,
+				35E1BE1E24F807FD006C5360 /* ToDoListTableViewCell.swift */,
 				3572B8E124F50B6800C9C7F7 /* Onboarding.swift */,
 				3596A79E24F50503007569FF /* setupProfileViewController.swift */,
-				35AB451A24F90ED100254A6D /* ToDoListViewController.swift */,
 				35E1BE1C24F8071E006C5360 /* ToDoListTableViewController.swift */,
-				35E1BE1E24F807FD006C5360 /* ToDoListTableViewCell.swift */,
 				352E46A324F4E50C006E6DC4 /* ContentView.swift */,
 			);
 			path = C;
