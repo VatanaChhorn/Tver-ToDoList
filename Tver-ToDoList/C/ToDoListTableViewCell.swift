@@ -20,7 +20,6 @@ class ToDoListTableViewCell: UITableViewCell {
     var delegate: todocelldelegate?
     
     
-    
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var listLabel: UILabel!
     
@@ -30,7 +29,6 @@ class ToDoListTableViewCell: UITableViewCell {
         doneButton.layer.cornerRadius = 15
         doneButton.layer.masksToBounds = true
         doneButton.layer.borderColor = ToDoListTableViewCell.dynamicColor.cgColor
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,6 +43,7 @@ class ToDoListTableViewCell: UITableViewCell {
     }
     
     @IBAction func buttonDidSelected(_ sender: Any) {
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
         print(numberOfRowSelected ?? "No Data")
         doneButton.layer.backgroundColor = UIColor(red: 0.97, green: 0.84, blue: 0.22, alpha: 1.00).cgColor
         doneButton.layer.borderWidth = 0

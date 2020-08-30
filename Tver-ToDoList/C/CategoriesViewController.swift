@@ -31,7 +31,15 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
     
     var dynamicColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // MARK: - nav bar configure
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        // Prepare haptic feedback
+        UIImpactFeedbackGenerator().prepare()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +52,23 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         
         //First tableView Configure
         
+        let topBorder = CAShapeLayer()
+           let topPath = UIBezierPath()
+           topPath.move(to: CGPoint(x: 0, y: 0))
+           topPath.addLine(to: CGPoint(x: tableView1.frame.width, y: 0))
+           topBorder.path = topPath.cgPath
+           topBorder.strokeColor = UIColor.gray.cgColor
+        topBorder.lineWidth = 1
+           topBorder.fillColor = UIColor.gray.cgColor
+        tableView1.layer.addSublayer(topBorder)
+        
         let bottomBorder = CAShapeLayer()
             let bottomPath = UIBezierPath()
             bottomPath.move(to: CGPoint(x: 0, y: tableView1.frame.height))
             bottomPath.addLine(to: CGPoint(x: tableView1.frame.width, y: tableView1.frame.height))
             bottomBorder.path = bottomPath.cgPath
             bottomBorder.strokeColor = UIColor.gray.cgColor
-        bottomBorder.lineWidth = 0.5
+        bottomBorder.lineWidth = 1
             bottomBorder.fillColor = UIColor.gray.cgColor
             tableView1.layer.addSublayer(bottomBorder)
      
@@ -190,10 +208,11 @@ extension CategoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         performSegue(withIdentifier: "performTodolistSegue", sender: self)
         print(indexPath.row)
-        
         tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     
