@@ -14,6 +14,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var categoryTextField: UITextField!
     let dynamicColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
+    let backgroundColor = UIColor { $0.userInterfaceStyle == .dark ?   #colorLiteral(red: 0.2549999952, green: 0.2669999897, blue: 0.2939999998, alpha: 1)  : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)}
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -25,6 +26,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
        
         // MARK: - nav bar configure
         navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = dynamicColor
     }
     
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = self
         
         // MARK: - Empty data background configuration
-        let imageView = UIImageView(frame: CGRect(x: (self.view.frame.width / 2) - (270/2) , y: (self.view.frame.height / 4) + 25  , width: 270, height:180)); // set as you want
+        let imageView = UIImageView(frame: CGRect(x: (self.view.frame.width / 2) - (270/2) , y: (self.view.frame.height / 4)   , width: 270, height:180)); // set as you want
         let image = UIImage(named: "NoDataWasFound")
         imageView.image = image
         self.tableView.addSubview(imageView)
@@ -70,9 +72,12 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
     @IBAction func addButtonDidPressed(_ sender: Any) {
         addButtonClickedView()
         self.tableView.isUserInteractionEnabled = false
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
     }
     
 }
+
+// MARK: - Table View Controller
 
 extension ToDoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,6 +91,16 @@ extension ToDoListViewController: UITableViewDataSource {
         cell.configure(stringOfRow: String(indexPath.row), stringOfLabel: "Fucking crazy!!")
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if (editingStyle == .delete) {
+                print(indexPath.row)
+        }
     }
     
     

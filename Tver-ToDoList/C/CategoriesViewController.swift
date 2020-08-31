@@ -177,6 +177,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
     @IBAction func addButtonAction(_ sender: Any) {
         addButtonClickedView()
         self.tableView.isUserInteractionEnabled = false
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
     }
     
 }
@@ -213,6 +214,23 @@ extension CategoriesViewController: UITableViewDataSource {
         print(indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
         
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if tableView != self.tableView1 {
+            return true
+        } else {
+            return false 
+        }
+       
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if tableView != self.tableView1 {
+            if (editingStyle == .delete) {
+                print(indexPath.row)
+            }
+        }
     }
     
     
