@@ -6,24 +6,74 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ToDoListViewController: UIViewController, UITableViewDelegate {
-  
+    
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var buttomView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var categoryTextField: UITextField!
     let dynamicColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
     let backgroundColor = UIColor { $0.userInterfaceStyle == .dark ?   #colorLiteral(red: 0.2549999952, green: 0.2669999897, blue: 0.2939999998, alpha: 1)  : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)}
+    var height: CGFloat = 0
+    
+    var checkingData: Int = 0 {
+        didSet {
+            var check = false
+            if checkingData == 0 && !check && height != 0 {
+                print( height )
+                let imageView = UIImageView(frame: CGRect(x: (self.view.frame.width / 2) - (270/2) , y: height , width: 270, height:180));
+                imageView.image =  UIImage(named: "NoDataWasFound")
+                self.tableView.addSubview(imageView)
+                check = true
+            } else {
+                for view in self.tableView.subviews {
+                    view.removeFromSuperview()
+                    check = false
+                }
+            }
+        }
+    }
+    var checkingButton : Bool = false
+    var itemArray : Results<Items>?
+    var realm = try! Realm()
+    
+    var selectedCatagory : Catagories?
+    
+    //MARK: - Data manipulation
+    
+    func saveItem (newItem: Items )  {
+        do {
+            try self.realm.write({
+                self.realm.add(newItem)
+            })
+        } catch  {
+            print("Error saving new Item \(error)")
+        }
+        
+        //Reloads the rows and sections of the table view.
+        self.tableView.reloadData()
+    }
+    
+    //MARK: - Create Load Item Function
+    
+    func loadItem () {
+        itemArray = selectedCatagory?.items.sorted(byKeyPath: "id", ascending: true)
+        tableView.reloadData()
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        height = ((self.view.frame.height / 4))
+        
         
         
         // MARK: - button configuration
         initialButtomView()
         
-       
+        
         // MARK: - nav bar configure
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = dynamicColor
@@ -33,12 +83,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        // MARK: - Empty data background configuration
-        let imageView = UIImageView(frame: CGRect(x: (self.view.frame.width / 2) - (270/2) , y: (self.view.frame.height / 4)   , width: 270, height:180)); // set as you want
-        let image = UIImage(named: "NoDataWasFound")
-        imageView.image = image
-        self.tableView.addSubview(imageView)
+        loadItem()
         
         // MARK: - Initialize hideKeyboardWhenTappedAround()
         hideKeyboardWhenTappedAround()
@@ -61,15 +106,16 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 50, weight: .light , scale: .small)
         
         let largeBoldDoc = UIImage(systemName: "plus", withConfiguration: largeConfig)
-
+        
         addButton.setImage(largeBoldDoc, for: .normal)
         
     }
     
     // MARK: - Button Actions
-
+    
     
     @IBAction func addButtonDidPressed(_ sender: Any) {
+        checkingButton.toggle()
         addButtonClickedView()
         self.tableView.isUserInteractionEnabled = false
         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -81,25 +127,37 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
 
 extension ToDoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        let numberOfData = itemArray?.count ?? 0
+        checkingData = numberOfData
+        return numberOfData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! ToDoListTableViewCell
         cell.selectionStyle = .none
-        cell.listLabel.text = "Fucking crazy!!"
-        cell.configure(stringOfRow: String(indexPath.row), stringOfLabel: "Fucking crazy!!")
+        
+        let item = itemArray?[indexPath.row]
+        
+        cell.listLabel.text = item?.title
+        cell.configure(stringOfRow: String(indexPath.row), stringOfLabel: item!.title)
         cell.delegate = self
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-            return true
+        return true
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if (editingStyle == .delete) {
-                print(indexPath.row)
+        if (editingStyle == .delete) {
+            try! self.realm.write { 
+                if let currentItem = self.selectedCatagory?.items[indexPath.row]
+                {
+                    self.realm.delete(currentItem)
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     
@@ -122,11 +180,16 @@ extension ToDoListViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
         self.initialButtomView()
         self.tableView.isUserInteractionEnabled = true
+        print(checkingButton)
+        if checkingButton {
+            addItem()
+            checkingButton.toggle()
+        }
     }
     
     // MARK: - Initial buttom view configuration
@@ -141,7 +204,32 @@ extension ToDoListViewController {
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 50, weight: .light , scale: .small)
         
         let largeBoldDoc = UIImage(systemName: "plus", withConfiguration: largeConfig)
-
+        
         addButton.setImage(largeBoldDoc, for: .normal)
+    }
+    
+    // MARK: - Add Item Function
+    
+    func addItem () {
+        print(categoryTextField.text!)
+        let lastID = self.selectedCatagory!.items.last?.id ?? 0
+        let newID = lastID + 1;
+        if let  currentCatagory = self.selectedCatagory {
+            if categoryTextField.text! != ""  {
+                do {
+                    try self.realm.write({
+                        let newItem = Items()
+                        newItem.title = categoryTextField.text!
+                        newItem.done = false
+                        newItem.id = newID
+                        currentCatagory.items.append(newItem)
+                        self.tableView.reloadData()
+                    })
+                } catch  {
+                    print("Error saving item \(error)")
+                }
+            }
+        }
+        categoryTextField.text = ""
     }
 }

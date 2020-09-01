@@ -176,8 +176,8 @@
                                                         <action selector="buttonDidSelected:" destination="ekV-ck-sAM" eventType="touchUpInside" id="L3Z-xo-PoL"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-fA-P3X">
-                                                    <rect key="frame" x="70" y="9.9999999999999982" width="42.666666666666657" height="20.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-fA-P3X">
+                                                    <rect key="frame" x="70" y="9.9999999999999982" width="334" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" name="Font-Color"/>
                                                     <nil key="highlightedColor"/>
@@ -187,6 +187,7 @@
                                                 <constraint firstItem="VJW-vy-USn" firstAttribute="leading" secondItem="1iy-fv-bPR" secondAttribute="leading" constant="25" id="Lmu-Ha-AUc"/>
                                                 <constraint firstItem="7NU-fA-P3X" firstAttribute="leading" secondItem="VJW-vy-USn" secondAttribute="trailing" constant="15" id="MEG-MU-0jX"/>
                                                 <constraint firstItem="VJW-vy-USn" firstAttribute="centerY" secondItem="1iy-fv-bPR" secondAttribute="centerY" id="YfX-Ki-qc3"/>
+                                                <constraint firstAttribute="trailing" secondItem="7NU-fA-P3X" secondAttribute="trailing" constant="10" id="q78-bR-8tN"/>
                                                 <constraint firstItem="7NU-fA-P3X" firstAttribute="centerY" secondItem="1iy-fv-bPR" secondAttribute="centerY" id="x7g-uM-ROw"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -201,7 +202,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2p-by-FHo">
                                 <rect key="frame" x="5" y="684" width="404" height="90"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What you’re planning to do today?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IoS-dp-8EO">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What you’re planning to do today?" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IoS-dp-8EO">
                                         <rect key="frame" x="15" y="15" width="279" height="60"/>
                                         <color key="backgroundColor" name="Textfield-Color"/>
                                         <constraints>
