@@ -10,6 +10,7 @@ import RealmSwift
 
 class ToDoListViewController: UIViewController, UITableViewDelegate {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var buttomView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -34,15 +35,13 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
     let formatter = DateFormatter()
     var checkingData: Int = 0 {
         didSet {
-            var check = false
-            if checkingData == 0 && !check && height != 0 {
+            if checkingData == 0 && height != 0 {
                 let imageView = UIImageView(frame: CGRect(x: (self.view.frame.width / 2) - (270/2) , y: height , width: 270, height:180));
+                imageView.image = UIImage(named: "NoDataWasFound")
                 self.tableView.addSubview(imageView)
-                check = true
             } else {
                 for view in self.tableView.subviews {
                     view.removeFromSuperview()
-                    check = false
                 }
             }
         }
@@ -68,11 +67,14 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
     func loadItem () {
         if checkTableView {
             itemArray = selectedCatagory?.items.sorted(byKeyPath: "id", ascending: true)
+            self.titleLabel.text = selectedCatagory?.name
         } else {
             if checkingAllAndTodayCatagory {
                 itemArray = allCatagory?.items.filter("date CONTAINS[cd] %@", currentDate).sorted(byKeyPath: "id", ascending: true)
+                self.titleLabel.text = "Today"
             } else {
                 itemArray = allCatagory?.items.sorted(byKeyPath: "id", ascending: true)
+                self.titleLabel.text = "All"
             }
         }
         tableView.reloadData()
@@ -218,10 +220,11 @@ extension ToDoListViewController {
         let newID = lastID + 1;
         if let  currentCatagory = self.selectedCatagory {
             if categoryTextField.text! != ""  {
+                let newString = categoryTextField.text?.prefix(30).lowercased()
                 do {
                     try self.realm.write({
                         let newItem = Items()
-                        newItem.title = categoryTextField.text!
+                        newItem.title = newString!
                         newItem.date =  formatter.string(from: Date())
                         newItem.id = newID
                         if checkTableView {

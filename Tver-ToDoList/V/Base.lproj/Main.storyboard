@@ -155,7 +155,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JRX-7j-Wuw">
-                                <rect key="frame" x="0.0" y="50" width="414" height="634"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="624"/>
                                 <color key="backgroundColor" name="Background-Color"/>
                                 <color key="tintColor" name="Font-Color"/>
                                 <prototypes>
@@ -244,26 +244,32 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwL-83-A72">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="L76-m0-bNH">
-                                        <rect key="frame" x="40" y="36" width="80" height="4"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="ncB-uI-lt0"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ia1-Db-Cq6">
-                                        <rect key="frame" x="40" y="4" width="81" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
-                                        <color key="textColor" name="Font-Color"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="II9-Ki-b47">
+                                        <rect key="frame" x="28" y="10.666666666666671" width="82" height="29"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ia1-Db-Cq6">
+                                                <rect key="frame" x="0.0" y="0.0" width="82" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="27q-zP-azu"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                                <color key="textColor" name="Font-Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="L76-m0-bNH">
+                                                <rect key="frame" x="0.0" y="25" width="82" height="4"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="4" id="sAd-zn-u92"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" name="Background-Color"/>
                                 <constraints>
-                                    <constraint firstItem="ia1-Db-Cq6" firstAttribute="leading" secondItem="FwL-83-A72" secondAttribute="leading" constant="40" id="0te-Rh-eCB"/>
                                     <constraint firstAttribute="height" constant="50" id="4U8-ie-zdy"/>
-                                    <constraint firstAttribute="bottom" secondItem="ia1-Db-Cq6" secondAttribute="bottom" constant="10" id="Sev-71-F66"/>
-                                    <constraint firstItem="L76-m0-bNH" firstAttribute="leading" secondItem="FwL-83-A72" secondAttribute="leading" constant="40" id="WNl-BR-Rg5"/>
-                                    <constraint firstAttribute="bottom" secondItem="L76-m0-bNH" secondAttribute="bottom" constant="10" id="YJM-1l-2QT"/>
+                                    <constraint firstItem="II9-Ki-b47" firstAttribute="centerY" secondItem="FwL-83-A72" secondAttribute="centerY" id="Ag5-4W-eD1"/>
+                                    <constraint firstItem="II9-Ki-b47" firstAttribute="leading" secondItem="FwL-83-A72" secondAttribute="leadingMargin" constant="20" id="ekz-tg-IFv"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -275,7 +281,7 @@
                             <constraint firstItem="A2p-by-FHo" firstAttribute="leading" secondItem="aSJ-3g-3Om" secondAttribute="leading" constant="5" id="CUO-cf-pjb"/>
                             <constraint firstItem="A2p-by-FHo" firstAttribute="top" secondItem="JRX-7j-Wuw" secondAttribute="bottom" id="LTy-nC-pPZ"/>
                             <constraint firstItem="JRX-7j-Wuw" firstAttribute="leading" secondItem="aSJ-3g-3Om" secondAttribute="leading" id="LUV-D4-MuA"/>
-                            <constraint firstItem="JRX-7j-Wuw" firstAttribute="top" secondItem="FwL-83-A72" secondAttribute="bottom" id="MDd-gy-vOS"/>
+                            <constraint firstItem="JRX-7j-Wuw" firstAttribute="top" secondItem="FwL-83-A72" secondAttribute="bottom" constant="10" id="MDd-gy-vOS"/>
                             <constraint firstItem="JRX-7j-Wuw" firstAttribute="trailing" secondItem="aSJ-3g-3Om" secondAttribute="trailing" id="gUV-Db-kyE"/>
                             <constraint firstItem="FwL-83-A72" firstAttribute="leading" secondItem="aSJ-3g-3Om" secondAttribute="leading" id="kox-08-JDQ"/>
                             <constraint firstItem="aSJ-3g-3Om" firstAttribute="trailing" secondItem="FwL-83-A72" secondAttribute="trailing" id="ovx-90-Unp"/>
@@ -288,6 +294,7 @@
                         <outlet property="buttomView" destination="A2p-by-FHo" id="2w8-6u-LT2"/>
                         <outlet property="categoryTextField" destination="IoS-dp-8EO" id="moS-qz-Amh"/>
                         <outlet property="tableView" destination="JRX-7j-Wuw" id="VSR-Cx-640"/>
+                        <outlet property="titleLabel" destination="ia1-Db-Cq6" id="SWV-fO-KPW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XB7-35-AJz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

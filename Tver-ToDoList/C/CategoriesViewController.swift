@@ -300,8 +300,9 @@ extension CategoriesViewController {
     
     func addItem() {
         let newCatagory = Catagories()
-        newCatagory.name = categoryTextField.text!
         if categoryTextField.text!.count != 0 && checkingButton {
+            let newString = categoryTextField.text?.prefix(20).lowercased()
+            newCatagory.name = newString!
             self.saveItem(catagory: newCatagory)
             self.checkingButton.toggle()
         }
