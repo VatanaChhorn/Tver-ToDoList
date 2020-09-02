@@ -18,8 +18,17 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var buttomView: UIView!
     @IBOutlet weak var addButton: UIButton!
     
-    var menuItem = ["Today", "All"]
+    var dynamicColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
+    var catagoryArray: Results<Catagories>?
+    var rowSelected: Int = 0
+    let realm = try! Realm()
     var checkingButton = false
+    var checkingTableView : Bool = false
+    // TableView 1 False
+    // TableView True
+    var checkingAllAndTodayCatagory: Bool = false
+    // All = False
+    // Today = True
     
     var topbarHeight: CGFloat {
         if #available(iOS 13.0, *) {
@@ -30,14 +39,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
             return 25
         }
     }
-    
-    var dynamicColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
-    
-    
-    var catagoryArray: Results<Catagories>?
-    var rowSelected: Int = 0
-    let realm = try! Realm()
-    
     
     //MARK: - Data Manipulation
     func loadItem ()  {
@@ -53,14 +54,15 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         } catch  {
             print("Save item error: \(error)")
         }
-        
         tableView.reloadData()
     }
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        if !UserDefaults.standard.bool(forKey: "FirstTableView") {
+            initializeAllCategory()
+            UserDefaults.standard.set(true, forKey: "FirstTableView")
+        }
         
         // MARK: - nav bar configure
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -179,8 +181,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: topbarHeight)
         currHeight?.isActive = true
         self.navigationItem.leftBarButtonItem = menuBarItem
-        
-        
     }
     
     // MARK: - Button Action
@@ -195,8 +195,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         self.tableView.isUserInteractionEnabled = false
         self.checkingButton.toggle()
     }
-    
-    
 }
 
 
@@ -206,34 +204,55 @@ extension CategoriesViewController: UITableViewDataSource {
         if tableView == self.tableView1 {
             return 2
         } else {
-            return catagoryArray?.count ?? 0
+            return catagoryArray!.count - 2
         }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if tableView == self.tableView1 {
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
-            cell1.textLabel?.text = menuItem[indexPath.row]
+            cell1.textLabel?.text = catagoryArray?[indexPath.row].name
             return cell1
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = self.catagoryArray?[indexPath.row].name
+            cell.textLabel?.text = self.catagoryArray?[indexPath.row + 2 ].name
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.rowSelected = indexPath.row
+        if tableView == self.tableView1 {
+            self.checkingTableView = false
+            self.rowSelected = indexPath.row
+        } else {
+            self.checkingTableView = true
+            self.rowSelected = indexPath.row + 2
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "performTodolistSegue", sender: self)
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination  as! ToDoListViewController
         destinationVC.selectedCatagory = catagoryArray?[rowSelected]
+        destinationVC.allCatagory = catagoryArray?[0]
+        destinationVC.checkTableView =  checkingTableView
+        //passing current Date
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        formatter.timeZone = TimeZone.current
+        let currentDate = formatter.string(from: Date())
+        destinationVC.currentDate = currentDate
+        
+        //Checking TableView
+        if rowSelected == 0 {
+            destinationVC.checkingAllAndTodayCatagory = false
+        } else if rowSelected == 1 {
+            destinationVC.checkingAllAndTodayCatagory = true
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -248,9 +267,8 @@ extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView != self.tableView1 {
             if (editingStyle == .delete) {
-                print(indexPath.row)
                 try! self.realm.write {
-                    if let currentCatagory = self.catagoryArray?[indexPath.row]
+                    if let currentCatagory = self.catagoryArray?[indexPath.row + 2]
                     {
                         self.realm.delete(currentCatagory)
                         self.tableView.reloadData()
@@ -259,11 +277,7 @@ extension CategoriesViewController: UITableViewDataSource {
             }
         }
     }
-    
-    
 }
-
-
 
 // MARK: - Hide Keyboard When User Tapped Around
 
@@ -287,13 +301,19 @@ extension CategoriesViewController {
     func addItem() {
         let newCatagory = Catagories()
         newCatagory.name = categoryTextField.text!
-        print(checkingButton)
         if categoryTextField.text!.count != 0 && checkingButton {
             self.saveItem(catagory: newCatagory)
             self.checkingButton.toggle()
-            print(categoryTextField.text!)
         }
-        
+    }
+    
+    func initializeAllCategory() {
+        let allCatagory = Catagories()
+        let todayCatagory = Catagories()
+        allCatagory.name = "All"
+        todayCatagory.name = "Today"
+        self.saveItem(catagory: allCatagory)
+        self.saveItem(catagory: todayCatagory)
     }
 }
 
