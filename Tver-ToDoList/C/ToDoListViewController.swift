@@ -25,11 +25,13 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
     let backgroundColor = UIColor { $0.userInterfaceStyle == .dark ?   #colorLiteral(red: 0.2549999952, green: 0.2669999897, blue: 0.2939999998, alpha: 1)  : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)}
     var height: CGFloat = 0
     var checkTableView: Bool = false
-    //False = tableView1
-    //True = TableView
+    /*    False = tableView1
+     True = TableView
+     */
     var checkingAllAndTodayCatagory: Bool = false
-    // All = False
-    // Today = True
+    /*     All = False
+     Today = True
+     */
     var currentDate: String = ""
     //Declare date
     let formatter = DateFormatter()
@@ -85,6 +87,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
     }
     
     // MARK: - ViewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         height = ((self.view.frame.height / 4))
@@ -100,17 +103,19 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         navigationController?.navigationBar.tintColor = dynamicColor
     }
     
+    // MARK: - Viewdidload
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         loadItem()
         
-        // MARK: - Initialize hideKeyboardWhenTappedAround()
+        //Initialize hideKeyboardWhenTappedAround()
         hideKeyboardWhenTappedAround()
     }
     
-    // MARK: - Add button click buttom view configuration
+    //Add button click buttom view configuration
     
     public func addButtonClickedView() {
         buttomView.layer.masksToBounds = true
@@ -134,6 +139,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         checkingButton.toggle()
         addButtonClickedView()
         self.tableView.isUserInteractionEnabled = false
+        self.categoryTextField.text = "" 
         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
     }
     
@@ -173,9 +179,9 @@ extension ToDoListViewController: UITableViewDataSource {
             }
         }
     }
-    
-    
 }
+
+// MARK: - todoCell delegate
 
 extension ToDoListViewController: todocelldelegate {
     func buttonDidPressed() {
@@ -237,6 +243,7 @@ extension ToDoListViewController {
                         } else {
                             all?.items.append(newItem)
                         }
+                        self.categoryTextField.text = ""
                         self.tableView.reloadData()
                     })
                 } catch  {

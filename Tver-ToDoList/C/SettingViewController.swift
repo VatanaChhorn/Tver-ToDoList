@@ -20,6 +20,7 @@ class SettingViewController: UIViewController, UINavigationControllerDelegate {
     var delegate : SettingViewDelegate?
     var defaults = UserDefaults.standard
     let imagePicker = UIImagePickerController()
+    var imageToPNG: Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,39 +29,39 @@ class SettingViewController: UIViewController, UINavigationControllerDelegate {
         imagePicker.allowsEditing = true
         imagePickerReview.layer.cornerRadius = imagePickerReview.frame.height / 2
         imagePickerReview.layer.masksToBounds = true
-        imagePickerReview.layer.borderWidth = 3
+        imagePickerReview.layer.borderWidth = 2
         imagePickerReview.layer.borderColor = UIColor.white.cgColor
+        
+        let imageData = UserDefaults.standard.object(forKey: Names.displayProfile) as? Data
+        if let safeImageData = imageData {
+            self.imagePickerReview.image = UIImage(data: safeImageData)
+        }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-    }
-    
-    
+
     @IBAction func selectProfilePictureButtonClicked(_ sender: Any) {
         present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func finishButtonClicked(_ sender: Any) {
         let newString = usernameTextField.text?.prefix(15)
-        defaults.set( newString! , forKey: Names.username)
+        if let safeString = newString {
+            defaults.set( safeString , forKey: Names.username)
+        }
+        if let safeImage = imageToPNG {
+            defaults.set(safeImage, forKey: Names.displayProfile)
+        }
         delegate?.update()
         self.dismiss(animated: true)
     }
 }
 
 // MARK: - ImagePickerController
-
 extension SettingViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let userPickedImage = info[UIImagePickerController.InfoKey.editedImage]
-        let imageToPNG = (userPickedImage as! UIImage).pngData()
-        defaults.set(imageToPNG, forKey: Names.displayProfile)
+        imageToPNG = (userPickedImage as! UIImage).pngData()
         self.imagePickerReview.image = (userPickedImage as! UIImage)
         picker.dismiss(animated: true, completion: nil);
     }
-    
-    
-    
 }
 

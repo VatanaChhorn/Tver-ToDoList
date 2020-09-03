@@ -32,6 +32,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
     // All = False
     // Today = True
     
+    // MARK: - Calculate topbarheight
     var topbarHeight: CGFloat {
         if #available(iOS 13.0, *) {
             return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
@@ -41,6 +42,26 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
             return 25
         }
     }
+    
+    // MARK: - navbar title configuration
+    lazy var titleStackView: UIStackView = {
+        let titleLabel = UILabel()
+        titleLabel.textAlignment = .left
+        let username = UserDefaults.standard.string(forKey: Names.username)
+        if let safeUsername = username  {
+            titleLabel.text = "Hi \(safeUsername),"
+        } else {
+            titleLabel.text = "Hi there,"
+        }
+        titleLabel.font = .boldSystemFont(ofSize: 17)
+        let subtitleLabel = UILabel()
+        subtitleLabel.textAlignment = .left
+        subtitleLabel.text = "Are you ready to conquer another day? "
+        subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        stackView.axis = .vertical
+        return stackView
+    }()
     
     //MARK: - Data Manipulation
     func loadItem ()  {
@@ -73,6 +94,8 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         // Prepare haptic feedback
         UIImpactFeedbackGenerator().prepare()
     }
+    
+    // MARK: -  ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +153,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         buttomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         buttomView.layer.borderWidth = 0.5
         buttomView.layer.borderColor = dynamicColor.cgColor
+        categoryTextField.text = ""
         categoryTextField.isHidden = false
         categoryTextField.becomeFirstResponder()
     }
@@ -143,25 +167,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
     }
     
     // MARK: - Customize Navigation Bar
-    
-    lazy var titleStackView: UIStackView = {
-        let titleLabel = UILabel()
-        titleLabel.textAlignment = .left
-        let username = UserDefaults.standard.string(forKey: Names.username)
-        if let safeUsername = username  {
-            titleLabel.text = "Hi \(username),"
-        } else {
-            titleLabel.text = "Hi there,"
-        }
-        titleLabel.font = .boldSystemFont(ofSize: 17)
-        let subtitleLabel = UILabel()
-        subtitleLabel.textAlignment = .left
-        subtitleLabel.text = "Are you ready to conquer another day? "
-        subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
-        stackView.axis = .vertical
-        return stackView
-    }()
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -216,6 +221,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
 }
 
 
+// MARK: - Tableview Extension
 
 extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -328,6 +334,7 @@ extension CategoriesViewController {
             let newString = categoryTextField.text?.prefix(20).lowercased()
             newCatagory.name = newString!
             self.saveItem(catagory: newCatagory)
+            self.categoryTextField.text = ""
             self.checkingButton.toggle()
         }
     }
