@@ -68,6 +68,9 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         if checkTableView {
             itemArray = selectedCatagory?.items.sorted(byKeyPath: "id", ascending: true)
             self.titleLabel.text = selectedCatagory?.name
+            if (self.selectedCatagory?.name.count)! < 4 {
+                self.titleLabel.textAlignment = .center
+            }
         } else {
             if checkingAllAndTodayCatagory {
                 itemArray = allCatagory?.items.filter("date CONTAINS[cd] %@", currentDate).sorted(byKeyPath: "id", ascending: true)
@@ -75,12 +78,13 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
             } else {
                 itemArray = allCatagory?.items.sorted(byKeyPath: "id", ascending: true)
                 self.titleLabel.text = "All"
+                self.titleLabel.textAlignment = .center
             }
         }
         tableView.reloadData()
     }
     
-    
+    // MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         height = ((self.view.frame.height / 4))

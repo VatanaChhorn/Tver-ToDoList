@@ -9,9 +9,11 @@ import UIKit
 import IQKeyboardManagerSwift
 import RealmSwift
 
-class CategoriesViewController: UIViewController, UITableViewDelegate {
-    
-    
+class CategoriesViewController: UIViewController, UITableViewDelegate, SettingViewDelegate {
+    func update(username: String) {
+        print("Delegate beging triggered : \(username)")
+    }
+
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableView1: UITableView!
@@ -57,6 +59,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         tableView.reloadData()
     }
     
+    // MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if !UserDefaults.standard.bool(forKey: "FirstTableView") {
@@ -123,7 +126,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
     // MARK: - Add button click buttom view configuration
     public func addButtonClickedView() {
         buttomView.layer.masksToBounds = true
-        buttomView.layer.cornerRadius = 15
+        buttomView.layer.cornerRadius = 20
         buttomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         buttomView.layer.borderWidth = 0.5
         buttomView.layer.borderColor = dynamicColor.cgColor
@@ -234,24 +237,30 @@ extension CategoriesViewController: UITableViewDataSource {
         performSegue(withIdentifier: "performTodolistSegue", sender: self)
     }
     
+    // MARK: - prepare function
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination  as! ToDoListViewController
-        destinationVC.selectedCatagory = catagoryArray?[rowSelected]
-        destinationVC.allCatagory = catagoryArray?[0]
-        destinationVC.checkTableView =  checkingTableView
-        //passing current Date
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .short
-        formatter.timeZone = TimeZone.current
-        let currentDate = formatter.string(from: Date())
-        destinationVC.currentDate = currentDate
-        
-        //Checking TableView
-        if rowSelected == 0 {
-            destinationVC.checkingAllAndTodayCatagory = false
-        } else if rowSelected == 1 {
-            destinationVC.checkingAllAndTodayCatagory = true
+        if segue.identifier == "performTodolistSegue" {
+            let destinationVC = segue.destination  as! ToDoListViewController
+            destinationVC.selectedCatagory = catagoryArray?[rowSelected]
+            destinationVC.allCatagory = catagoryArray?[0]
+            destinationVC.checkTableView =  checkingTableView
+            //passing current Date
+            let formatter = DateFormatter()
+            formatter.timeStyle = .none
+            formatter.dateStyle = .short
+            formatter.timeZone = TimeZone.current
+            let currentDate = formatter.string(from: Date())
+            destinationVC.currentDate = currentDate
+            
+            //Checking TableView
+            if rowSelected == 0 {
+                destinationVC.checkingAllAndTodayCatagory = false
+            } else if rowSelected == 1 {
+                destinationVC.checkingAllAndTodayCatagory = true
+            }
+        } else if segue.identifier == Names.SettingSegue {
+            let destinationVC = segue.destination as! SettingViewController
+            destinationVC.delegate = self
         }
     }
     

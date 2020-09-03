@@ -7,25 +7,29 @@
 
 import UIKit
 
+protocol SettingViewDelegate {
+    func update(username : String)
+}
+
 class SettingViewController: UIViewController {
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var usernameTextField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    var delegate : SettingViewDelegate?
+    var defaults = UserDefaults.standard
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func selectProfilePictureButtonClicked(_ sender: Any) {
     }
-    */
-
+    
     @IBAction func finishButtonClicked(_ sender: Any) {
+        let newString = usernameTextField.text?.prefix(10).lowercased()
+        defaults.set( newString , forKey: Names.username)
+        delegate?.update(username: newString!)
         self.dismiss(animated: true)
         }
     }

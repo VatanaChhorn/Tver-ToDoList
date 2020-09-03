@@ -17,6 +17,7 @@
 		35495FE324FDF2B3001B72ED /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35495FE224FDF2B3001B72ED /* Items.swift */; };
 		3572B8E224F50B6800C9C7F7 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3572B8E124F50B6800C9C7F7 /* Onboarding.swift */; };
 		3596A79F24F50503007569FF /* setupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596A79E24F50503007569FF /* setupProfileViewController.swift */; };
+		359903932501136C00378255 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359903922501136C00378255 /* Models.swift */; };
 		35AB1F0124F95960008D7304 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB1F0024F95960008D7304 /* SettingViewController.swift */; };
 		35AB451924F90E9A00254A6D /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB451824F90E9A00254A6D /* CategoriesViewController.swift */; };
 		35AB451C24F90ED100254A6D /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB451A24F90ED100254A6D /* ToDoListViewController.swift */; };
@@ -39,6 +40,7 @@
 		35495FE224FDF2B3001B72ED /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		3572B8E124F50B6800C9C7F7 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		3596A79E24F50503007569FF /* setupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setupProfileViewController.swift; sourceTree = "<group>"; };
+		359903922501136C00378255 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		35AB1F0024F95960008D7304 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		35AB451824F90E9A00254A6D /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoriesViewController.swift; path = "Tver-ToDoList/C/CategoriesViewController.swift"; sourceTree = SOURCE_ROOT; };
 		35AB451A24F90ED100254A6D /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
@@ -94,8 +96,9 @@
 		352E46B224F4E572006E6DC4 /* M */ = {
 			isa = PBXGroup;
 			children = (
-				35495FE024FDF2AD001B72ED /* Categories.swift */,
+				359903922501136C00378255 /* Models.swift */,
 				35495FE224FDF2B3001B72ED /* Items.swift */,
+				35495FE024FDF2AD001B72ED /* Categories.swift */,
 			);
 			name = M;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				359903932501136C00378255 /* Models.swift in Sources */,
 				3572B8E224F50B6800C9C7F7 /* Onboarding.swift in Sources */,
 				35AB451924F90E9A00254A6D /* CategoriesViewController.swift in Sources */,
 				3596A79F24F50503007569FF /* setupProfileViewController.swift in Sources */,

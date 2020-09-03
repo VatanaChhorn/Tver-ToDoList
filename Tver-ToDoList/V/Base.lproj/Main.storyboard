@@ -35,7 +35,7 @@
             <objects>
                 <viewController id="Gys-P9-Mlc" customClass="CategoriesViewController" customModule="Tver_ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OBV-jm-lyt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i3X-oa-8WJ">
@@ -151,7 +151,7 @@
             <objects>
                 <viewController id="6g1-6b-gxq" customClass="ToDoListViewController" customModule="Tver_ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rOq-aZ-Ogt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JRX-7j-Wuw">
@@ -244,8 +244,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwL-83-A72">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="II9-Ki-b47">
-                                        <rect key="frame" x="28" y="10.666666666666671" width="82" height="29"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="II9-Ki-b47">
+                                        <rect key="frame" x="28" y="9.6666666666666714" width="82" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ia1-Db-Cq6">
                                                 <rect key="frame" x="0.0" y="0.0" width="82" height="25"/>
@@ -257,7 +257,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="L76-m0-bNH">
-                                                <rect key="frame" x="0.0" y="25" width="82" height="4"/>
+                                                <rect key="frame" x="0.0" y="27" width="82" height="4"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="4" id="sAd-zn-u92"/>
                                                 </constraints>
@@ -306,7 +306,7 @@
             <objects>
                 <viewController id="cTn-rb-kNH" customClass="SettingViewController" customModule="Tver_ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PZL-Fp-NPG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Your Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxf-Sg-6Wh">
@@ -365,6 +365,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectProfilePictureButtonClicked:" destination="cTn-rb-kNH" eventType="touchUpInside" id="v2O-Od-ySq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -426,6 +429,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wUM-Pc-4EE"/>
+                    <connections>
+                        <outlet property="profilePicture" destination="exR-GI-7Of" id="H9a-Y9-cRO"/>
+                        <outlet property="usernameTextField" destination="NcM-b7-0c6" id="dEB-K8-Ej0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UKj-5H-j8O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
