@@ -16,8 +16,8 @@ class setupProfileViewController: UIViewController {
     var defaults = UserDefaults.standard
     let imagePicker = UIImagePickerController()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true

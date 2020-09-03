@@ -35,7 +35,7 @@
             <objects>
                 <viewController id="Gys-P9-Mlc" customClass="CategoriesViewController" customModule="Tver_ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OBV-jm-lyt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i3X-oa-8WJ">
@@ -151,7 +151,7 @@
             <objects>
                 <viewController id="6g1-6b-gxq" customClass="ToDoListViewController" customModule="Tver_ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rOq-aZ-Ogt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JRX-7j-Wuw">
@@ -303,7 +303,7 @@
             <objects>
                 <viewController id="cTn-rb-kNH" customClass="SettingViewController" customModule="Tver_ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PZL-Fp-NPG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Your Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxf-Sg-6Wh">
@@ -321,10 +321,14 @@
                                         <color key="textColor" name="Font-Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="yjz-Qr-Rub">
-                                        <rect key="frame" x="0.0" y="20.333333333333343" width="82" height="4"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="yjz-Qr-Rub">
+                                        <rect key="frame" x="0.0" y="20.333333333333343" width="110" height="4"/>
                                     </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="yjz-Qr-Rub" firstAttribute="leading" secondItem="eDB-PH-yFh" secondAttribute="leading" id="2mk-x5-4GN"/>
+                                    <constraint firstAttribute="trailing" secondItem="yjz-Qr-Rub" secondAttribute="trailing" id="CeJ-0O-ENJ"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="uh1-RQ-yhx">
                                 <rect key="frame" x="32" y="404.33333333333331" width="82" height="24.333333333333314"/>
@@ -397,7 +401,7 @@
                                     <constraint firstAttribute="width" constant="140" id="U2W-Xy-ePq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <state key="normal" title="Finish">
+                                <state key="normal" title="Save">
                                     <color key="titleColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>

@@ -159,7 +159,7 @@ Journey together.</string>
                                         <color key="textColor" name="Font-Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="Xuo-17-ew5">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="Xuo-17-ew5">
                                         <rect key="frame" x="0.0" y="20.333333333333343" width="82" height="4"/>
                                     </imageView>
                                 </subviews>
