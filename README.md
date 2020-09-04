@@ -9,4 +9,5 @@
 - Add logo 
 - Add the Khmer language 
 - Add language switching buttons 
+- Deleting data, and store to an array when the user clicks on done buttons 
 - 
