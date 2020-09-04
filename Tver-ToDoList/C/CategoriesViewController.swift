@@ -10,10 +10,10 @@ import IQKeyboardManagerSwift
 import RealmSwift
 
 class CategoriesViewController: UIViewController, UITableViewDelegate, SettingViewDelegate {
-    func update(username: String) {
-        print("Delegate beging triggered : \(username)")
+    func update() {
+        setupNavigationbar()
     }
-
+    
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableView1: UITableView!
@@ -147,7 +147,12 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
     lazy var titleStackView: UIStackView = {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .left
-        titleLabel.text = "Hi Vatana,"
+        let username = UserDefaults.standard.string(forKey: Names.username)
+        if let safeUsername = username  {
+            titleLabel.text = "Hi \(username),"
+        } else {
+            titleLabel.text = "Hi there,"
+        }
         titleLabel.font = .boldSystemFont(ofSize: 17)
         let subtitleLabel = UILabel()
         subtitleLabel.textAlignment = .left
@@ -173,11 +178,21 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
     private func setupNavigationbar() {
         navigationItem.titleView = titleStackView
         let settingButton = UIButton(type: .system)
-        settingButton.setImage(#imageLiteral(resourceName: "Profile Picture").withRenderingMode(.alwaysOriginal), for: .normal)
+        let imageData = UserDefaults.standard.object(forKey: Names.displayProfile) as? Data
+        if let safeImageData = imageData {
+            settingButton.setImage(UIImage(data: safeImageData)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            settingButton.setImage(#imageLiteral(resourceName: "Profile Picture").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
         settingButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        settingButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        settingButton.layer.cornerRadius = 25
-        settingButton.layer.masksToBounds = true
+        settingButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        settingButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        settingButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        settingButton.layer.cornerRadius = settingButton.frame.height / 2.0
+        settingButton.layer.masksToBounds = false
+        settingButton.clipsToBounds = true
+        settingButton.layer.borderColor = dynamicColor.cgColor
+        settingButton.layer.borderWidth = 0.5
         let menuBarItem = UIBarButtonItem(customView: settingButton)
         let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: topbarHeight)
         currWidth?.isActive = true
