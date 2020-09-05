@@ -194,7 +194,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         settingButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         settingButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         settingButton.layer.cornerRadius = settingButton.frame.height / 2.0
-        settingButton.layer.masksToBounds = false
+        settingButton.layer.masksToBounds = true
         settingButton.clipsToBounds = true
         settingButton.layer.borderColor = dynamicColor.cgColor
         settingButton.layer.borderWidth = 0.5

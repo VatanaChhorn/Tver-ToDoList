@@ -2,12 +2,17 @@
 
 <h3> Things to be working on </h3> 
 
-- Checking the performing segue identifier 
-- Adding Image Picker Function 
-- Save Username of User to the User default 
-- Deleting data form all, and added categories simultaneously 
-- Add logo 
+-  [x] Checking the performing segue identifier 
+-  [x] Adding Image Picker Function 
+-  [x] Save Username of User to the User default 
+-  [x] Deleting data form all, and from added categories simultaneously 
+-  [x] Add logo 
 - Add the Khmer language 
 - Add language switching buttons 
-- Deleting data, and store to an array when the user clicks on done buttons 
-- 
+-  [x] Deleting data, and store to an array when the user clicks on done buttons 
+-  [x] Configure the appearance of Done button which user clicks on it 
+-  Updating the UI to more the modern interface.
+
+<h3> Known issues </h3> 
+- Nil  
+

@@ -156,17 +156,29 @@ extension ToDoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfData = itemArray?.count ?? 0
         let doneArray = finishedItems.count
-        checkingData = numberOfData
+        checkingData = numberOfData + doneArray
         return numberOfData + doneArray
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! ToDoListTableViewCell
+        
+        // MARK: - Done button with table cells configuration
+        
         cell.selectionStyle = .none
-        if indexPath.row < itemArray!.count {
+        if (indexPath.row) < itemArray!.count  {
             let item = itemArray?[indexPath.row]
+            let attributeString =  NSMutableAttributedString(string: item!.title)
+            attributeString.removeAttribute(NSAttributedString.Key.strikethroughStyle,range: NSMakeRange(0, attributeString.length))
+            cell.listLabel.attributedText = attributeString
             cell.listLabel.text = item?.title
+            cell.doneButton.isUserInteractionEnabled = true
+            cell.doneButton.layer.backgroundColor = UIColor.clear.cgColor
+            cell.doneButton.layer.borderWidth = 2
+            cell.doneButton.setImage(UIImage(), for: .normal)
+            cell.doneButton.tintColor = .clear
             cell.configure(stringOfRow: indexPath.row, stringOfLabel: item!.title)
+            
             cell.delegate = self
             return cell
         } else {
@@ -252,7 +264,7 @@ extension ToDoListViewController {
                             all?.items.append(newItem)
                         }
                         self.categoryTextField.text = ""
-                        self.tableView.reloadData()
+                        self.loadItem()
                     })
                 } catch  {
                     print("Error saving item \(error)")
@@ -272,7 +284,6 @@ extension ToDoListViewController {
         }
         try! realm.write {
             if let obj = object {
-                print(obj)
                 realm.delete(obj)
                 loadItem()
             }
@@ -284,7 +295,11 @@ extension ToDoListViewController {
 
 extension ToDoListViewController: todocelldelegate {
     func buttonDidPressed(numberOfRowSelected: Int) {
-        finishedItems.append((self.selectedCatagory?.items[numberOfRowSelected].title)!)
+        if checkTableView {
+            finishedItems.append((self.selectedCatagory?.items[numberOfRowSelected].title)!)
+        } else {
+            finishedItems.append((self.allCatagory?.items[numberOfRowSelected].title)!)
+        }
         deleteData(indexPath: numberOfRowSelected)
         loadItem()
     }

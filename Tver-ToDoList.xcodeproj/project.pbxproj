@@ -15,6 +15,7 @@
 		352E46B124F4E56C006E6DC4 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352E46B024F4E56C006E6DC4 /* Onboarding.storyboard */; };
 		35495FE124FDF2AD001B72ED /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35495FE024FDF2AD001B72ED /* Categories.swift */; };
 		35495FE324FDF2B3001B72ED /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35495FE224FDF2B3001B72ED /* Items.swift */; };
+		354A493E2503EE4500ADD649 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 354A493D2503EE4500ADD649 /* README.md */; };
 		3572B8E224F50B6800C9C7F7 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3572B8E124F50B6800C9C7F7 /* Onboarding.swift */; };
 		3596A79F24F50503007569FF /* setupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596A79E24F50503007569FF /* setupProfileViewController.swift */; };
 		359903932501136C00378255 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359903922501136C00378255 /* Models.swift */; };
@@ -38,6 +39,7 @@
 		352E46B024F4E56C006E6DC4 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		35495FE024FDF2AD001B72ED /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		35495FE224FDF2B3001B72ED /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		354A493D2503EE4500ADD649 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		3572B8E124F50B6800C9C7F7 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		3596A79E24F50503007569FF /* setupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setupProfileViewController.swift; sourceTree = "<group>"; };
 		359903922501136C00378255 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				352E46B324F4E57A006E6DC4 /* V */,
 				352E46B424F4E580006E6DC4 /* C */,
 				352E46AA24F4E50D006E6DC4 /* Info.plist */,
+				354A493D2503EE4500ADD649 /* README.md */,
 				35E1BE1924F7D74A006C5360 /* Fonts */,
 			);
 			path = "Tver-ToDoList";
@@ -221,6 +224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				354A493E2503EE4500ADD649 /* README.md in Resources */,
 				352E46A924F4E50D006E6DC4 /* LaunchScreen.storyboard in Resources */,
 				352E46A624F4E50D006E6DC4 /* Assets.xcassets in Resources */,
 				352E46A224F4E50C006E6DC4 /* Main.storyboard in Resources */,

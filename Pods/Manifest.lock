@@ -1,10 +1,10 @@
 PODS:
   - IQKeyboardManagerSwift (6.5.6)
-  - Realm (5.3.5):
-    - Realm/Headers (= 5.3.5)
-  - Realm/Headers (5.3.5)
-  - RealmSwift (5.3.5):
-    - Realm (= 5.3.5)
+  - Realm (5.3.6):
+    - Realm/Headers (= 5.3.6)
+  - Realm/Headers (5.3.6)
+  - RealmSwift (5.3.6):
+    - Realm (= 5.3.6)
   - TransitionButton (0.5.3)
 
 DEPENDENCIES:
@@ -13,18 +13,19 @@ DEPENDENCIES:
   - TransitionButton
 
 SPEC REPOS:
-  trunk:
-    - IQKeyboardManagerSwift
+  https://github.com/CocoaPods/Specs.git:
     - Realm
     - RealmSwift
+  trunk:
+    - IQKeyboardManagerSwift
     - TransitionButton
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
-  Realm: 2b52fcc86fc0ed3d75a56ac0eb1e73c4f1a60e16
-  RealmSwift: a6ea2ea561039fc3833c08dec81371a9a3bb5ca6
+  Realm: cd400dd7e5b5bb5c8ae9842eecd73792369e6ec0
+  RealmSwift: 99a16dbdee5d6dfb3d91d56088a9f8c15c0871d1
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 1f735bc5ed871a24731e2c94b3be7af94d19ee9b
+PODFILE CHECKSUM: b0d823387b30272c85a2a4697589c364ee454520
 
 COCOAPODS: 1.8.4
