@@ -8,14 +8,14 @@
 import UIKit
 
 protocol todocelldelegate {
-    func buttonDidPressed()
+    func buttonDidPressed(numberOfRowSelected: Int)
 }
 
 class ToDoListTableViewCell: UITableViewCell {
    
     
     static let dynamicColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
-    var numberOfRowSelected: String?
+    var numberOfRowSelected: Int?
     var labelString: String?
     var delegate: todocelldelegate?
     
@@ -37,24 +37,14 @@ class ToDoListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(stringOfRow: String, stringOfLabel: String) {
+    func configure(stringOfRow: Int, stringOfLabel: String) {
         self.numberOfRowSelected = stringOfRow
         self.labelString = stringOfLabel
     }
     
     @IBAction func buttonDidSelected(_ sender: Any) {
         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-        print(numberOfRowSelected ?? "No Data")
-        doneButton.layer.backgroundColor = UIColor(red: 0.97, green: 0.84, blue: 0.22, alpha: 1.00).cgColor
-        doneButton.layer.borderWidth = 0
-        doneButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
-        doneButton.tintColor = .white
-        let attributeString =  NSMutableAttributedString(string: self.labelString!)
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                             value: NSUnderlineStyle.single.rawValue,
-                                                 range: NSMakeRange(0, attributeString.length))
-        listLabel.attributedText = attributeString
-        delegate?.buttonDidPressed()
+        delegate?.buttonDidPressed(numberOfRowSelected: numberOfRowSelected!)
     }
     
 }

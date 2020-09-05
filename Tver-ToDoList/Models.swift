@@ -12,6 +12,7 @@ struct Names {
     static var ToDoListSegue = "performTodolistSegue"
     static var SettingSegue = "settingControllerSegue"
     static var username = "Username"
-    static var displayProfile = "profilepictureImage" 
+    static var displayProfile = "profilepictureImage"
+    static var databaseID = "databaseID"
     
 }

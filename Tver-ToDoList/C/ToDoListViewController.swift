@@ -16,6 +16,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var categoryTextField: UITextField!
     
+    var finishedItems: Array<String> = []
     var checkingButton : Bool = false
     var itemArray : Results<Items>?
     var realm = try! Realm()
@@ -48,7 +49,6 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
             }
         }
     }
-    
     
     //MARK: - Data manipulation
     
@@ -84,6 +84,11 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
             }
         }
         tableView.reloadData()
+    }
+    
+    // MARK: - ViewWillDissapear
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
     }
     
     // MARK: - ViewWillAppear
@@ -150,18 +155,35 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
 extension ToDoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfData = itemArray?.count ?? 0
+        let doneArray = finishedItems.count
         checkingData = numberOfData
-        return numberOfData
+        return numberOfData + doneArray
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! ToDoListTableViewCell
         cell.selectionStyle = .none
-        let item = itemArray?[indexPath.row]
-        cell.listLabel.text = item?.title
-        cell.configure(stringOfRow: String(indexPath.row), stringOfLabel: item!.title)
-        cell.delegate = self
-        return cell
+        if indexPath.row < itemArray!.count {
+            let item = itemArray?[indexPath.row]
+            cell.listLabel.text = item?.title
+            cell.configure(stringOfRow: indexPath.row, stringOfLabel: item!.title)
+            cell.delegate = self
+            return cell
+        } else {
+            let item = finishedItems[(indexPath.row)-(itemArray!.count)]
+            cell.listLabel.text = item
+            cell.doneButton.isUserInteractionEnabled = false
+            cell.doneButton.layer.backgroundColor = UIColor(red: 0.97, green: 0.84, blue: 0.22, alpha: 1.00).cgColor
+            cell.doneButton.layer.borderWidth = 0
+            cell.doneButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+            cell.doneButton.tintColor = .white
+            let attributeString =  NSMutableAttributedString(string: item)
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                         value: NSUnderlineStyle.single.rawValue,
+                                         range: NSMakeRange(0, attributeString.length))
+            cell.listLabel.attributedText = attributeString
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -170,24 +192,9 @@ extension ToDoListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            try! self.realm.write { 
-                if let currentItem = self.selectedCatagory?.items[indexPath.row]
-                {
-                    self.realm.delete(currentItem)
-                    self.tableView.reloadData()
-                }
-            }
+            deleteData(indexPath: indexPath.row)
         }
     }
-}
-
-// MARK: - todoCell delegate
-
-extension ToDoListViewController: todocelldelegate {
-    func buttonDidPressed() {
-        print("Done Button Pressed")
-    }
-    
 }
 
 // MARK: - Hide Keyboard When User Tapped Around
@@ -226,8 +233,9 @@ extension ToDoListViewController {
     
     func addItem () {
         let all = self.allCatagory
-        let lastID = self.selectedCatagory!.items.last?.id ?? 0
+        let lastID = UserDefaults.standard.integer(forKey: Names.databaseID)
         let newID = lastID + 1;
+        UserDefaults.standard.set(newID, forKey: Names.databaseID)
         if let  currentCatagory = self.selectedCatagory {
             if categoryTextField.text! != ""  {
                 let newString = categoryTextField.text?.prefix(30).lowercased()
@@ -253,4 +261,32 @@ extension ToDoListViewController {
         }
         categoryTextField.text = ""
     }
+    
+    // MARK: - Deleting Data
+    func deleteData (indexPath : Int) {
+        var object: Items? 
+        if checkTableView {
+            object = realm.objects(Items.self).filter("id == %@", self.selectedCatagory?.items[indexPath].id as Any).first
+        } else {
+            object = realm.objects(Items.self).filter("id == %@", self.allCatagory?.items[indexPath].id as Any).first
+        }
+        try! realm.write {
+            if let obj = object {
+                print(obj)
+                realm.delete(obj)
+                loadItem()
+            }
+        }
+    }
+}
+
+// MARK: - todoCell delegate
+
+extension ToDoListViewController: todocelldelegate {
+    func buttonDidPressed(numberOfRowSelected: Int) {
+        finishedItems.append((self.selectedCatagory?.items[numberOfRowSelected].title)!)
+        deleteData(indexPath: numberOfRowSelected)
+        loadItem()
+    }
+    
 }
