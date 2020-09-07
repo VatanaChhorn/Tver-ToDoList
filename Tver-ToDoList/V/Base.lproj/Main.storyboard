@@ -43,11 +43,11 @@
                                 <color key="backgroundColor" name="Background-Color"/>
                                 <color key="tintColor" name="Font-Color"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="p4H-se-8gZ">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="60" id="p4H-se-8gZ">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p4H-se-8gZ" id="plP-se-rd5">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="Background-Color"/>
@@ -104,11 +104,11 @@
                                     <constraint firstAttribute="height" constant="100" id="plF-Ew-HxV"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="44" id="iQl-hM-K9j">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="60" id="iQl-hM-K9j">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iQl-hM-K9j" id="rEq-rC-PDR">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" name="Background-Color"/>
                                         </tableViewCellContentView>
@@ -155,7 +155,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JRX-7j-Wuw">
-                                <rect key="frame" x="0.0" y="60" width="414" height="624"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="714"/>
                                 <color key="backgroundColor" name="Background-Color"/>
                                 <color key="tintColor" name="Font-Color"/>
                                 <prototypes>
@@ -249,7 +249,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="Background-Color"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="Font-Color"/>
                                 <constraints>
                                     <constraint firstItem="IoS-dp-8EO" firstAttribute="centerY" secondItem="A2p-by-FHo" secondAttribute="centerY" id="Bow-09-6ki"/>
@@ -263,8 +263,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwL-83-A72">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="II9-Ki-b47">
-                                        <rect key="frame" x="43" y="5" width="82" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="II9-Ki-b47">
+                                        <rect key="frame" x="43" y="7.6666666666666714" width="82" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ia1-Db-Cq6">
                                                 <rect key="frame" x="0.0" y="0.0" width="82" height="36"/>
@@ -273,7 +273,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="L76-m0-bNH">
-                                                <rect key="frame" x="0.0" y="36" width="82" height="4"/>
+                                                <rect key="frame" x="0.0" y="31" width="82" height="4"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="4" id="sAd-zn-u92"/>
                                                 </constraints>
@@ -295,9 +295,9 @@
                             <constraint firstItem="FwL-83-A72" firstAttribute="top" secondItem="aSJ-3g-3Om" secondAttribute="top" id="1oz-5m-emd"/>
                             <constraint firstItem="A2p-by-FHo" firstAttribute="bottom" secondItem="aSJ-3g-3Om" secondAttribute="bottom" id="61H-aC-36R"/>
                             <constraint firstItem="A2p-by-FHo" firstAttribute="leading" secondItem="aSJ-3g-3Om" secondAttribute="leading" constant="5" id="CUO-cf-pjb"/>
-                            <constraint firstItem="A2p-by-FHo" firstAttribute="top" secondItem="JRX-7j-Wuw" secondAttribute="bottom" id="LTy-nC-pPZ"/>
                             <constraint firstItem="JRX-7j-Wuw" firstAttribute="leading" secondItem="aSJ-3g-3Om" secondAttribute="leading" id="LUV-D4-MuA"/>
                             <constraint firstItem="JRX-7j-Wuw" firstAttribute="top" secondItem="FwL-83-A72" secondAttribute="bottom" constant="10" id="MDd-gy-vOS"/>
+                            <constraint firstItem="A2p-by-FHo" firstAttribute="top" secondItem="JRX-7j-Wuw" secondAttribute="bottom" constant="-90" id="NVW-J8-Nvz"/>
                             <constraint firstItem="JRX-7j-Wuw" firstAttribute="trailing" secondItem="aSJ-3g-3Om" secondAttribute="trailing" id="gUV-Db-kyE"/>
                             <constraint firstItem="FwL-83-A72" firstAttribute="leading" secondItem="aSJ-3g-3Om" secondAttribute="leading" id="kox-08-JDQ"/>
                             <constraint firstItem="aSJ-3g-3Om" firstAttribute="trailing" secondItem="FwL-83-A72" secondAttribute="trailing" id="ovx-90-Unp"/>
@@ -396,11 +396,11 @@
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What would you like us to call you?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NcM-b7-0c6">
-                                <rect key="frame" x="57" y="447.33333333333331" width="300" height="50"/>
+                                <rect key="frame" x="27" y="447.33333333333331" width="360" height="50"/>
                                 <color key="backgroundColor" name="Textfield-Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="39u-wF-T6a"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="nXU-vY-PCB"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="360" id="nXU-vY-PCB"/>
                                 </constraints>
                                 <color key="textColor" name="Font-Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

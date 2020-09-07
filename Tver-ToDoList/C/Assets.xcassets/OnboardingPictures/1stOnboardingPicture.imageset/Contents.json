@@ -3,6 +3,16 @@
     {
       "filename" : "1stOnboardingPicture.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "First Onboarding.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

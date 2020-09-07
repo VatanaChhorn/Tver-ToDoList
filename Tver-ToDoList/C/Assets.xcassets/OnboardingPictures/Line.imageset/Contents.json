@@ -3,6 +3,16 @@
     {
       "filename" : "Line.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Line.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

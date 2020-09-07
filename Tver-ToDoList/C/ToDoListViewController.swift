@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import IQKeyboardManagerSwift
 
 class ToDoListViewController: UIViewController, UITableViewDelegate {
     
@@ -23,7 +24,8 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
     var selectedCatagory : Catagories?
     var allCatagory : Catagories?
     let dynamicColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
-    let backgroundColor = UIColor { $0.userInterfaceStyle == .dark ?   #colorLiteral(red: 0.2549999952, green: 0.2669999897, blue: 0.2939999998, alpha: 1)  : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)}
+    let backgroundColor = UIColor { $0.userInterfaceStyle == .dark ?   #colorLiteral(red: 0.137254902, green: 0.1490196078, blue: 0.1803921569, alpha: 1)  : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)}
+    let doneButtonColor = UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.93, green: 0.55, blue: 0.40, alpha: 1.00) : UIColor(red: 0.97, green: 0.84, blue: 0.22, alpha: 1.00) }
     var height: CGFloat = 0
     var checkTableView: Bool = false
     /*    False = tableView1
@@ -117,7 +119,13 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         loadItem()
         
         //Initialize hideKeyboardWhenTappedAround()
-        hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(ToDoListViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        self.initialButtomView()
+        self.tableView.isUserInteractionEnabled = true
+        checkingButton = false
     }
     
     //Add button click buttom view configuration
@@ -128,6 +136,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         buttomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         buttomView.layer.borderWidth = 0.5
         buttomView.layer.borderColor = dynamicColor.cgColor
+        buttomView.layer.backgroundColor = backgroundColor.cgColor
         categoryTextField.isHidden = false
         categoryTextField.becomeFirstResponder()
         addButton.layer.masksToBounds = true
@@ -142,10 +151,18 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
     
     @IBAction func addButtonDidPressed(_ sender: Any) {
         checkingButton.toggle()
-        addButtonClickedView()
-        self.tableView.isUserInteractionEnabled = false
-        self.categoryTextField.text = "" 
-        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+        if !checkingButton {
+            addItem()
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+            checkingButton.toggle()
+            self.initialButtomView()
+            self.tableView.isUserInteractionEnabled = true
+            IQKeyboardManager.shared.resignFirstResponder()
+        } else {
+            self.tableView.isUserInteractionEnabled = false
+            addButtonClickedView()
+        }
+        self.categoryTextField.text = ""
     }
     
 }
@@ -183,9 +200,8 @@ extension ToDoListViewController: UITableViewDataSource {
             return cell
         } else {
             let item = finishedItems[(indexPath.row)-(itemArray!.count)]
-            cell.listLabel.text = item
             cell.doneButton.isUserInteractionEnabled = false
-            cell.doneButton.layer.backgroundColor = UIColor(red: 0.97, green: 0.84, blue: 0.22, alpha: 1.00).cgColor
+            cell.doneButton.layer.backgroundColor = doneButtonColor.cgColor
             cell.doneButton.layer.borderWidth = 0
             cell.doneButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
             cell.doneButton.tintColor = .white
@@ -209,24 +225,7 @@ extension ToDoListViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Hide Keyboard When User Tapped Around
-
 extension ToDoListViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ToDoListViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        self.initialButtomView()
-        self.tableView.isUserInteractionEnabled = true
-        if checkingButton {
-            addItem()
-            checkingButton.toggle()
-        }
-    }
     
     // MARK: - Initial buttom view configuration
     

@@ -3,6 +3,16 @@
     {
       "filename" : "Profile Picture.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Profile Picture Dark Mode.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {
