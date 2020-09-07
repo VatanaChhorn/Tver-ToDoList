@@ -21,6 +21,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
     @IBOutlet weak var addButton: UIButton!
     
     var dynamicColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }
+    let backgroundColor = UIColor { $0.userInterfaceStyle == .dark ?   #colorLiteral(red: 0.137254902, green: 0.1490196078, blue: 0.1803921569, alpha: 1)  : #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)}
     var catagoryArray: Results<Catagories>?
     var rowSelected: Int = 0
     let realm = try! Realm()
@@ -138,24 +139,35 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         let largeBoldDoc = UIImage(systemName: "plus", withConfiguration: largeConfig)
         addButton.setImage(largeBoldDoc, for: .normal)
         
-        // MARK: - keyboard configure
-        self.hideKeyboardWhenTappedAround()
+        //Initialize hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(ToDoListViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         // MARK: - Load item from Realm
         loadItem()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
+    @objc func keyboardWillHide(notification: Notification) {
+        self.initialButtomView()
+        self.tableView.isUserInteractionEnabled = true
+        checkingButton = false
+    }
+    
     // MARK: - Add button click buttom view configuration
     public func addButtonClickedView() {
         buttomView.layer.masksToBounds = true
-        buttomView.layer.cornerRadius = 20
+        buttomView.layer.cornerRadius = 15
         buttomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         buttomView.layer.borderWidth = 0.5
         buttomView.layer.borderColor = dynamicColor.cgColor
-        categoryTextField.text = ""
+        buttomView.layer.backgroundColor = backgroundColor.cgColor
         categoryTextField.isHidden = false
         categoryTextField.becomeFirstResponder()
+        addButton.layer.masksToBounds = true
+        addButton.layer.cornerRadius = 30
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 50, weight: .light , scale: .small)
+        let largeBoldDoc = UIImage(systemName: "plus", withConfiguration: largeConfig)
+        addButton.setImage(largeBoldDoc, for: .normal)
     }
     
     // MARK: - ViewDidLoad buttom view configuration
@@ -164,6 +176,11 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         self.categoryTextField.isHidden = true
         self.buttomView.backgroundColor = .clear
         self.buttomView.layer.borderColor = UIColor.clear.cgColor
+        addButton.layer.masksToBounds = true
+        addButton.layer.cornerRadius = 30
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 50, weight: .light , scale: .small)
+        let largeBoldDoc = UIImage(systemName: "plus", withConfiguration: largeConfig)
+        addButton.setImage(largeBoldDoc, for: .normal)
     }
     
     // MARK: - Customize Navigation Bar
@@ -213,10 +230,19 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
-        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-        addButtonClickedView()
-        self.tableView.isUserInteractionEnabled = false
-        self.checkingButton.toggle()
+        checkingButton.toggle()
+        if !checkingButton {
+            addItem()
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+            checkingButton.toggle()
+            self.initialButtomView()
+            self.tableView.isUserInteractionEnabled = true
+            IQKeyboardManager.shared.resignFirstResponder()
+        } else {
+            self.tableView.isUserInteractionEnabled = false
+            addButtonClickedView()
+        }
+
     }
 }
 
@@ -309,28 +335,13 @@ extension CategoriesViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Hide Keyboard When User Tapped Around
-
 extension CategoriesViewController {
-    
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CategoriesViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        self.initialButtomView()
-        self.tableView.isUserInteractionEnabled = true
-        addItem()
-    }
     
     // MARK: -  Add item to catagories
     
     func addItem() {
         let newCatagory = Catagories()
-        if categoryTextField.text!.count != 0 && checkingButton {
+        if categoryTextField.text!.count != 0 {
             let newString = categoryTextField.text?.prefix(20).lowercased()
             newCatagory.name = newString!
             self.saveItem(catagory: newCatagory)

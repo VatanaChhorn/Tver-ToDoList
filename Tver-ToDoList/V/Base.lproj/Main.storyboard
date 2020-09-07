@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i3X-oa-8WJ">
-                                <rect key="frame" x="0.0" y="110" width="414" height="574"/>
+                                <rect key="frame" x="0.0" y="125" width="414" height="559"/>
                                 <color key="backgroundColor" name="Background-Color"/>
                                 <color key="tintColor" name="Font-Color"/>
                                 <prototypes>
@@ -97,7 +97,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k66-IX-CcX">
-                                <rect key="frame" x="0.0" y="10" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="15" width="414" height="100"/>
                                 <color key="backgroundColor" name="Background-Color"/>
                                 <color key="tintColor" name="Font-Color"/>
                                 <constraints>
@@ -119,13 +119,13 @@
                         <viewLayoutGuide key="safeArea" id="DxW-MY-8vK"/>
                         <color key="backgroundColor" name="Background-Color"/>
                         <constraints>
-                            <constraint firstItem="i3X-oa-8WJ" firstAttribute="top" secondItem="k66-IX-CcX" secondAttribute="bottom" id="2QH-1Q-QN1"/>
+                            <constraint firstItem="i3X-oa-8WJ" firstAttribute="top" secondItem="k66-IX-CcX" secondAttribute="bottom" constant="10" id="2QH-1Q-QN1"/>
                             <constraint firstItem="aIH-4a-ncP" firstAttribute="top" secondItem="i3X-oa-8WJ" secondAttribute="bottom" id="37X-a3-SUV"/>
                             <constraint firstItem="aIH-4a-ncP" firstAttribute="bottom" secondItem="DxW-MY-8vK" secondAttribute="bottom" id="7Z8-e9-yYy"/>
                             <constraint firstItem="k66-IX-CcX" firstAttribute="trailing" secondItem="DxW-MY-8vK" secondAttribute="trailing" id="Csu-M5-3Bf"/>
                             <constraint firstItem="k66-IX-CcX" firstAttribute="leading" secondItem="DxW-MY-8vK" secondAttribute="leading" id="Dha-Pd-lIz"/>
                             <constraint firstItem="aIH-4a-ncP" firstAttribute="leading" secondItem="DxW-MY-8vK" secondAttribute="leading" constant="5" id="GaA-Kv-ryq"/>
-                            <constraint firstItem="k66-IX-CcX" firstAttribute="top" secondItem="DxW-MY-8vK" secondAttribute="top" constant="10" id="cXI-X9-3lx"/>
+                            <constraint firstItem="k66-IX-CcX" firstAttribute="top" secondItem="DxW-MY-8vK" secondAttribute="top" constant="15" id="cXI-X9-3lx"/>
                             <constraint firstItem="aIH-4a-ncP" firstAttribute="trailing" secondItem="DxW-MY-8vK" secondAttribute="trailing" constant="-5" id="mFu-TF-d2X"/>
                             <constraint firstItem="i3X-oa-8WJ" firstAttribute="leading" secondItem="DxW-MY-8vK" secondAttribute="leading" id="oEK-RA-o7y"/>
                             <constraint firstItem="i3X-oa-8WJ" firstAttribute="trailing" secondItem="DxW-MY-8vK" secondAttribute="trailing" id="z5V-3m-jhN"/>
