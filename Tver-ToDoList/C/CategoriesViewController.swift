@@ -242,10 +242,8 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
             self.tableView.isUserInteractionEnabled = false
             addButtonClickedView()
         }
-
     }
 }
-
 
 // MARK: - Tableview Extension
 
@@ -256,7 +254,6 @@ extension CategoriesViewController: UITableViewDataSource {
         } else {
             return catagoryArray!.count - 2
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

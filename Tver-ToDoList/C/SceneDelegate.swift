@@ -13,10 +13,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     @available(iOS 13.0, *)
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        
+        if !UserDefaults.standard.bool(forKey: Names.onboardingView) {
+            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "OnboardingScreen")
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
+            UserDefaults.standard.set(true, forKey: Names.onboardingView)
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainVC = storyboard.instantiateViewController(withIdentifier: "MainScreen") as! UINavigationController
+            self.window?.rootViewController = mainVC
+            self.window?.makeKeyAndVisible()
+        }
+        
         guard let _ = (scene as? UIWindowScene) else { return }
         
     }

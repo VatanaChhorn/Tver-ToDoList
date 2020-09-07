@@ -199,7 +199,8 @@ extension ToDoListViewController: UITableViewDataSource {
             cell.delegate = self
             return cell
         } else {
-            let item = finishedItems[(indexPath.row)-(itemArray!.count)]
+            let finishItemLocation = (finishedItems.count - (indexPath.row - itemArray!.count)) - 1
+            let item = finishedItems[finishItemLocation]
             cell.doneButton.isUserInteractionEnabled = false
             cell.doneButton.layer.backgroundColor = doneButtonColor.cgColor
             cell.doneButton.layer.borderWidth = 0
@@ -219,8 +220,11 @@ extension ToDoListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
-            deleteData(indexPath: indexPath.row)
+        
+        if indexPath.row < itemArray!.count {
+            if (editingStyle == .delete) {
+                deleteData(indexPath: indexPath.row)
+            }
         }
     }
 }
@@ -249,7 +253,7 @@ extension ToDoListViewController {
         UserDefaults.standard.set(newID, forKey: Names.databaseID)
         if let  currentCatagory = self.selectedCatagory {
             if categoryTextField.text! != ""  {
-                let newString = categoryTextField.text?.prefix(30).lowercased()
+                let newString = categoryTextField.text?.prefix(50).lowercased()
                 do {
                     try self.realm.write({
                         let newItem = Items()

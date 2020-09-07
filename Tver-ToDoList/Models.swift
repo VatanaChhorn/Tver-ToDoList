@@ -14,5 +14,6 @@ struct Names {
     static var username = "Username"
     static var displayProfile = "profilepictureImage"
     static var databaseID = "databaseID"
+    static var onboardingView = "onboardingView"
     
 }
