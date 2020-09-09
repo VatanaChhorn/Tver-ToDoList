@@ -17,6 +17,13 @@ class SettingViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var imagePickerReview: UIImageView!
     
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var label5: UITextField!
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
+    
     var delegate : SettingViewDelegate?
     var defaults = UserDefaults.standard
     let imagePicker = UIImagePickerController()
@@ -24,6 +31,23 @@ class SettingViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !UserDefaults.standard.bool(forKey: language.chooseLanguage) {
+            
+            label1.font = UIFont(name: "Khmer OS Bokor", size: 35)
+            label2.font = UIFont(name: "Khmer OS Bokor", size: 17)
+            label4.font = UIFont(name: "Khmer OS Bokor", size: 17)
+            label5.font = UIFont(name: "Khmer OS Bokor", size: 14)
+            button1.titleLabel?.font = UIFont(name: "Khmer OS Bokor", size: 15)
+            button2.titleLabel?.font = UIFont(name: "Khmer OS Bokor", size: 15)
+            button1.setTitle("ជ្រើសរើសរូបភាព", for: .normal)
+            button2.setTitle(language.finish_kh, for: .normal)
+            label1.text = language.setupYourProfile_kh
+            label2.text = language.profilePicture_kh
+            label4.text = language.userName_kh
+            label5.placeholder = language.whatwouldyou_kh
+        }
+        
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true

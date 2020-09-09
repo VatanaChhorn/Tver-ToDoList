@@ -16,7 +16,10 @@
 		35495FE124FDF2AD001B72ED /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35495FE024FDF2AD001B72ED /* Categories.swift */; };
 		35495FE324FDF2B3001B72ED /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35495FE224FDF2B3001B72ED /* Items.swift */; };
 		354A493E2503EE4500ADD649 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 354A493D2503EE4500ADD649 /* README.md */; };
-		3572B8E224F50B6800C9C7F7 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3572B8E124F50B6800C9C7F7 /* Onboarding.swift */; };
+		358FAD892508E20F00262945 /* KhmerOS_bokor.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 358FAD882508E20F00262945 /* KhmerOS_bokor.ttf */; };
+		358FAD8D2508E4EE00262945 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358FAD8C2508E4EE00262945 /* LanguageSelectionViewController.swift */; };
+		358FAD902508EFD300262945 /* Onboarding1_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358FAD8F2508EFD300262945 /* Onboarding1_ViewController.swift */; };
+		358FAD942508F1AE00262945 /* Onboarding0_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358FAD932508F1AE00262945 /* Onboarding0_ViewController.swift */; };
 		3596A79F24F50503007569FF /* setupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596A79E24F50503007569FF /* setupProfileViewController.swift */; };
 		359903932501136C00378255 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359903922501136C00378255 /* Models.swift */; };
 		35AB1F0124F95960008D7304 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AB1F0024F95960008D7304 /* SettingViewController.swift */; };
@@ -40,7 +43,10 @@
 		35495FE024FDF2AD001B72ED /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		35495FE224FDF2B3001B72ED /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		354A493D2503EE4500ADD649 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		3572B8E124F50B6800C9C7F7 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		358FAD882508E20F00262945 /* KhmerOS_bokor.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KhmerOS_bokor.ttf; sourceTree = "<group>"; };
+		358FAD8C2508E4EE00262945 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
+		358FAD8F2508EFD300262945 /* Onboarding1_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Onboarding1_ViewController.swift; path = "Tver-ToDoList/C/Onboarding/Onboarding1_ViewController.swift"; sourceTree = SOURCE_ROOT; };
+		358FAD932508F1AE00262945 /* Onboarding0_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding0_ViewController.swift; sourceTree = "<group>"; };
 		3596A79E24F50503007569FF /* setupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setupProfileViewController.swift; sourceTree = "<group>"; };
 		359903922501136C00378255 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		35AB1F0024F95960008D7304 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -119,12 +125,11 @@
 		352E46B424F4E580006E6DC4 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				358FAD8E2508EF7E00262945 /* Onboarding */,
 				35AB451824F90E9A00254A6D /* CategoriesViewController.swift */,
 				35AB451A24F90ED100254A6D /* ToDoListViewController.swift */,
 				35E1BE1E24F807FD006C5360 /* ToDoListTableViewCell.swift */,
-				3572B8E124F50B6800C9C7F7 /* Onboarding.swift */,
 				35AB1F0024F95960008D7304 /* SettingViewController.swift */,
-				3596A79E24F50503007569FF /* setupProfileViewController.swift */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -140,9 +145,21 @@
 			path = C;
 			sourceTree = "<group>";
 		};
+		358FAD8E2508EF7E00262945 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				358FAD8C2508E4EE00262945 /* LanguageSelectionViewController.swift */,
+				358FAD932508F1AE00262945 /* Onboarding0_ViewController.swift */,
+				358FAD8F2508EFD300262945 /* Onboarding1_ViewController.swift */,
+				3596A79E24F50503007569FF /* setupProfileViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		35E1BE1924F7D74A006C5360 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				358FAD882508E20F00262945 /* KhmerOS_bokor.ttf */,
 				35E1BE1A24F7D768006C5360 /* SF-Compact-Rounded-Medium.otf */,
 			);
 			path = Fonts;
@@ -225,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				354A493E2503EE4500ADD649 /* README.md in Resources */,
+				358FAD892508E20F00262945 /* KhmerOS_bokor.ttf in Resources */,
 				352E46A924F4E50D006E6DC4 /* LaunchScreen.storyboard in Resources */,
 				352E46A624F4E50D006E6DC4 /* Assets.xcassets in Resources */,
 				352E46A224F4E50C006E6DC4 /* Main.storyboard in Resources */,
@@ -283,15 +301,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				359903932501136C00378255 /* Models.swift in Sources */,
-				3572B8E224F50B6800C9C7F7 /* Onboarding.swift in Sources */,
 				35AB451924F90E9A00254A6D /* CategoriesViewController.swift in Sources */,
 				3596A79F24F50503007569FF /* setupProfileViewController.swift in Sources */,
 				35AB1F0124F95960008D7304 /* SettingViewController.swift in Sources */,
+				358FAD8D2508E4EE00262945 /* LanguageSelectionViewController.swift in Sources */,
+				358FAD942508F1AE00262945 /* Onboarding0_ViewController.swift in Sources */,
 				35E1BE1F24F807FD006C5360 /* ToDoListTableViewCell.swift in Sources */,
 				35495FE124FDF2AD001B72ED /* Categories.swift in Sources */,
 				35495FE324FDF2B3001B72ED /* Items.swift in Sources */,
 				352E469B24F4E50C006E6DC4 /* AppDelegate.swift in Sources */,
 				35AB451C24F90ED100254A6D /* ToDoListViewController.swift in Sources */,
+				358FAD902508EFD300262945 /* Onboarding1_ViewController.swift in Sources */,
 				352E469D24F4E50C006E6DC4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

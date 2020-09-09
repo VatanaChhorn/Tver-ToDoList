@@ -9,6 +9,12 @@ import UIKit
 import TransitionButton
 
 class setupProfileViewController: UIViewController {
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var label5: UITextField!
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: TransitionButton!
     
     @IBOutlet weak var textfield: UITextField!
     @IBOutlet weak var profilePictureReview: UIImageView!
@@ -25,6 +31,25 @@ class setupProfileViewController: UIViewController {
         profilePictureReview.layer.masksToBounds = true
         profilePictureReview.layer.borderWidth = 2
         profilePictureReview.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if !UserDefaults.standard.bool(forKey: language.chooseLanguage) {
+            
+            label1.font = UIFont(name: "Khmer OS Bokor", size: 35)
+            label2.font = UIFont(name: "Khmer OS Bokor", size: 17)
+            label4.font = UIFont(name: "Khmer OS Bokor", size: 17)
+            label5.font = UIFont(name: "Khmer OS Bokor", size: 14)
+            button1.titleLabel?.font = UIFont(name: "Khmer OS Bokor", size: 15)
+            button2.titleLabel?.font = UIFont(name: "Khmer OS Bokor", size: 15)
+            button1.setTitle("ជ្រើសរើសរូបភាព", for: .normal)
+            button2.setTitle(language.finish_kh, for: .normal)
+            label1.text = language.setupYourProfile_kh
+            label2.text = language.profilePicture_kh
+            label4.text = language.userName_kh
+            label5.placeholder = language.whatwouldyou_kh
+        }
     }
     
     // MARK: - buttons action
@@ -48,10 +73,15 @@ class setupProfileViewController: UIViewController {
                                                                     let mainVC = storyboard.instantiateViewController(withIdentifier: "MainScreen") as! UINavigationController
                                                                     mainVC.modalPresentationStyle = .fullScreen
                                                                     self.present(mainVC, animated: true, completion: nil)
+                                                                    UserDefaults.standard.set(true, forKey: Names.onboardingView)
                                                                 })}
                                                             else {
                                                                 button.stopAnimation(animationStyle: .normal, completion: {
-                                                                    self.textfield.placeholder = "Please enter your username!"
+                                                                    if !UserDefaults.standard.bool(forKey: language.chooseLanguage) {
+                                                                        self.textfield.placeholder = "សូមបំពេញឈ្មោះ​ប្រើប្រាស់របស់អ្នក"
+                                                                    } else {
+                                                                        self.textfield.placeholder = "Please enter your username!"
+                                                                    }
                                                                     self.textfield.shake()
                                                                 })}})})
         

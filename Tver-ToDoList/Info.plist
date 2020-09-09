@@ -25,6 +25,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Compact-Rounded-Medium.otf</string>
+		<string>KhmerOS_bokor.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

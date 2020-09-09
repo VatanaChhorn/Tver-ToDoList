@@ -16,10 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if !UserDefaults.standard.bool(forKey: Names.onboardingView) {
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "OnboardingScreen")
+            let vc = storyboard.instantiateViewController(withIdentifier: "LanguageSelection")
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
-            UserDefaults.standard.set(true, forKey: Names.onboardingView)
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainVC = storyboard.instantiateViewController(withIdentifier: "MainScreen") as! UINavigationController
