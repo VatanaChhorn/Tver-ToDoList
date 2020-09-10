@@ -14,8 +14,7 @@ class setupProfileViewController: UIViewController {
     @IBOutlet weak var label4: UILabel!
     @IBOutlet weak var label5: UITextField!
     @IBOutlet weak var button1: UIButton!
-    @IBOutlet weak var button2: TransitionButton!
-    
+    @IBOutlet weak var button2: TransitionButton!    
     @IBOutlet weak var textfield: UITextField!
     @IBOutlet weak var profilePictureReview: UIImageView!
     

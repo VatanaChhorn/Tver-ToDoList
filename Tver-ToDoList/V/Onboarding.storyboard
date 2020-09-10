@@ -297,17 +297,17 @@ Journey together.</string>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="In7-VX-3yx">
-                                <rect key="frame" x="15" y="183.33333333333337" width="369" height="200"/>
+                                <rect key="frame" x="15" y="188.33333333333337" width="369" height="190"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="dD3-wb-DwY">
-                                        <rect key="frame" x="0.0" y="15" width="170" height="170"/>
+                                        <rect key="frame" x="0.0" y="10" width="170" height="170"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="9jd-wk-oo5"/>
                                             <constraint firstAttribute="height" constant="170" id="KRi-l3-uNL"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sww-0K-tHT">
-                                        <rect key="frame" x="190" y="74.999999999999972" width="179" height="50"/>
+                                        <rect key="frame" x="190" y="69.999999999999972" width="179" height="50"/>
                                         <color key="backgroundColor" name="Button-Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="TPK-K3-aTf"/>
@@ -369,7 +369,7 @@ Journey together.</string>
                         <color key="backgroundColor" name="Background-Color"/>
                         <constraints>
                             <constraint firstItem="C1c-fm-jex" firstAttribute="top" secondItem="QB9-6n-htQ" secondAttribute="bottom" constant="15" id="0di-Ji-1Na"/>
-                            <constraint firstItem="In7-VX-3yx" firstAttribute="top" secondItem="32O-E4-opu" secondAttribute="bottom" constant="5" id="6GZ-Vi-tsF"/>
+                            <constraint firstItem="In7-VX-3yx" firstAttribute="top" secondItem="32O-E4-opu" secondAttribute="bottom" constant="10" id="6GZ-Vi-tsF"/>
                             <constraint firstItem="0jS-4j-hm5" firstAttribute="centerX" secondItem="I5z-tB-wUj" secondAttribute="centerX" id="7nU-Wy-nwP"/>
                             <constraint firstItem="MNT-lJ-vn5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cpp-cR-OVx" secondAttribute="top" constant="38" id="FJP-ie-xdm"/>
                             <constraint firstAttribute="trailing" secondItem="In7-VX-3yx" secondAttribute="trailing" constant="30" id="Iha-07-xKj"/>
@@ -378,7 +378,7 @@ Journey together.</string>
                             <constraint firstItem="cpp-cR-OVx" firstAttribute="trailing" secondItem="C1c-fm-jex" secondAttribute="trailing" constant="32" id="Z0N-hd-qCp"/>
                             <constraint firstItem="QB9-6n-htQ" firstAttribute="top" secondItem="32O-E4-opu" secondAttribute="bottom" constant="210" id="bmh-u8-mge"/>
                             <constraint firstItem="C1c-fm-jex" firstAttribute="centerX" secondItem="I5z-tB-wUj" secondAttribute="centerX" id="fCd-Ng-bQT"/>
-                            <constraint firstItem="QB9-6n-htQ" firstAttribute="top" secondItem="In7-VX-3yx" secondAttribute="bottom" constant="5" id="itg-bb-g02"/>
+                            <constraint firstItem="QB9-6n-htQ" firstAttribute="top" secondItem="In7-VX-3yx" secondAttribute="bottom" constant="10" id="itg-bb-g02"/>
                             <constraint firstItem="32O-E4-opu" firstAttribute="top" secondItem="cpp-cR-OVx" secondAttribute="top" constant="110" id="qVr-aS-Hz2"/>
                             <constraint firstItem="32O-E4-opu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MNT-lJ-vn5" secondAttribute="bottom" constant="30" id="rlt-Lc-2Fe"/>
                             <constraint firstItem="QB9-6n-htQ" firstAttribute="leading" secondItem="cpp-cR-OVx" secondAttribute="leading" constant="32" id="vCy-oA-nug"/>

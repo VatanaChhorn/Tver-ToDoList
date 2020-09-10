@@ -50,15 +50,32 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         titleLabel.textAlignment = .left
         let username = UserDefaults.standard.string(forKey: Names.username)
         if let safeUsername = username  {
-            titleLabel.text = "Hi \(safeUsername),"
+            // MARK: - Navbar font configuration
+            if UserDefaults.standard.bool(forKey: language.chooseLanguage) {
+                titleLabel.font = .boldSystemFont(ofSize: 17)
+                titleLabel.text = "Hi \(safeUsername),"
+            } else {
+                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 17)
+                titleLabel.text = "សួរស្តី \(safeUsername),"
+            }
         } else {
-            titleLabel.text = "Hi there,"
+            if UserDefaults.standard.bool(forKey: language.chooseLanguage) {
+                titleLabel.font = .boldSystemFont(ofSize: 17)
+                titleLabel.text = "Hi there,"
+            } else {
+                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 17)
+                titleLabel.text = "សួរស្តី,"
+            }
         }
-        titleLabel.font = .boldSystemFont(ofSize: 17)
         let subtitleLabel = UILabel()
         subtitleLabel.textAlignment = .left
-        subtitleLabel.text = "Are you ready to conquer another day? "
-        subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        if UserDefaults.standard.bool(forKey: language.chooseLanguage) {
+            subtitleLabel.text = "Are you ready to conquer another day? "
+            subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        } else {
+            subtitleLabel.font = UIFont(name: "Khmer OS Bokor", size: 14)
+            subtitleLabel.text = language.areYouReady_kh
+        }
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.axis = .vertical
         return stackView
@@ -145,6 +162,14 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         // MARK: - Load item from Realm
         loadItem()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        // MARK: - Textfield font configuration
+        if UserDefaults.standard.bool(forKey: language.chooseLanguage) {
+            categoryTextField.placeholder = "Add new category"
+            categoryTextField.font = UIFont.systemFont(ofSize: 14)
+        } else {
+            categoryTextField.placeholder = "បន្ថែមក្រុមនៃប្រភេទថ្មី"
+            categoryTextField.font = UIFont(name: "Khmer OS Bokor", size: 14)                    }
     }
     
     @objc func keyboardWillHide(notification: Notification) {

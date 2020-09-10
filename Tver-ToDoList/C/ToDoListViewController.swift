@@ -120,6 +120,15 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         
         //Initialize hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(ToDoListViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        // MARK: - Textfield font configuration
+        if UserDefaults.standard.bool(forKey: language.chooseLanguage) {
+            categoryTextField.placeholder = "What are you planning to do today?"
+            categoryTextField.font = UIFont.systemFont(ofSize: 14)
+        } else {
+            categoryTextField.placeholder = "តើអ្នកមានគំរោងធ្វើអ្វីនៅថ្ងៃនេះ?"
+            categoryTextField.font = UIFont(name: "Khmer OS Bokor", size: 14)
+        }
     }
     
     @objc func keyboardWillHide(notification: Notification) {
