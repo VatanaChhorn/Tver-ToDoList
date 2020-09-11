@@ -55,7 +55,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
                 titleLabel.font = .boldSystemFont(ofSize: 17)
                 titleLabel.text = "Hi \(safeUsername),"
             } else {
-                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 17)
+                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 16)
                 titleLabel.text = "សួរស្តី \(safeUsername),"
             }
         } else {
@@ -63,7 +63,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
                 titleLabel.font = .boldSystemFont(ofSize: 17)
                 titleLabel.text = "Hi there,"
             } else {
-                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 17)
+                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 16)
                 titleLabel.text = "សួរស្តី,"
             }
         }
@@ -346,6 +346,7 @@ extension CategoriesViewController: UITableViewDataSource {
         if tableView != self.tableView1 {
             if (editingStyle == .delete) {
                 try! self.realm.write {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     if let currentCatagory = self.catagoryArray?[indexPath.row + 2]
                     {
                         self.realm.delete(currentCatagory)

@@ -117,7 +117,7 @@ class ToDoListViewController: UIViewController, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         loadItem()
-        
+        UIImpactFeedbackGenerator().prepare()
         //Initialize hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(ToDoListViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -297,6 +297,7 @@ extension ToDoListViewController {
         try! realm.write {
             if let obj = object {
                 realm.delete(obj)
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 loadItem()
             }
         }
