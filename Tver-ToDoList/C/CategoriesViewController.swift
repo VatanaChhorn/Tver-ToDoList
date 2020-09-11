@@ -55,16 +55,16 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
                 titleLabel.font = .boldSystemFont(ofSize: 17)
                 titleLabel.text = "Hi \(safeUsername),"
             } else {
-                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 16)
-                titleLabel.text = "សួរស្តី \(safeUsername),"
+                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 18)
+                titleLabel.text = language.areYouReady_kh
             }
         } else {
             if UserDefaults.standard.bool(forKey: language.chooseLanguage) {
                 titleLabel.font = .boldSystemFont(ofSize: 17)
                 titleLabel.text = "Hi there,"
             } else {
-                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 16)
-                titleLabel.text = "សួរស្តី,"
+                titleLabel.font = UIFont(name: "Khmer OS Bokor", size: 18)
+                titleLabel.text = "សួរស្តី,                                 "
             }
         }
         let subtitleLabel = UILabel()
@@ -72,11 +72,9 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         if UserDefaults.standard.bool(forKey: language.chooseLanguage) {
             subtitleLabel.text = "Are you ready to conquer another day? "
             subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        } else {
-            subtitleLabel.font = UIFont(name: "Khmer OS Bokor", size: 14)
-            subtitleLabel.text = language.areYouReady_kh
         }
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        stackView.axis = .horizontal
         stackView.axis = .vertical
         return stackView
     }()
@@ -108,7 +106,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         
         // MARK: - nav bar configure
         navigationController?.navigationBar.shadowImage = UIImage()
-        
         // Prepare haptic feedback
         UIImpactFeedbackGenerator().prepare()
     }
@@ -122,7 +119,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
         tableView1.delegate = self
         tableView1.dataSource = self
         tableView1.isScrollEnabled = false
-        
+              
         //First tableView Configure
         
         let topBorder = CAShapeLayer()
@@ -212,14 +209,24 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        if view.traitCollection.horizontalSizeClass == .compact {
-            titleStackView.axis = .vertical
-            titleStackView.spacing = UIStackView.spacingUseDefault
+        if UserDefaults.standard.bool(forKey: language.chooseLanguage) {
+            if view.traitCollection.horizontalSizeClass == .compact {
+                titleStackView.axis = .vertical
+                titleStackView.spacing = UIStackView.spacingUseDefault
+            } else {
+                titleStackView.axis = .horizontal
+                titleStackView.spacing = UIStackView.spacingUseDefault
+            }
         } else {
-            titleStackView.axis = .horizontal
-            titleStackView.spacing = UIStackView.spacingUseDefault
+            if view.traitCollection.horizontalSizeClass == .regular {
+                titleStackView.axis = .vertical
+                titleStackView.spacing = UIStackView.spacingUseDefault
+            } else {
+                titleStackView.axis = .horizontal
+                titleStackView.spacing = UIStackView.spacingUseDefault
+            }
         }
+      
     }
     
     private func setupNavigationbar() {
@@ -232,9 +239,9 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, SettingVi
             settingButton.setImage(#imageLiteral(resourceName: "Profile Picture").withRenderingMode(.alwaysOriginal), for: .normal)
         }
         settingButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        settingButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        settingButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        settingButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        settingButton.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        settingButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        settingButton.widthAnchor.constraint(equalToConstant: 45).isActive = true
         settingButton.layer.cornerRadius = settingButton.frame.height / 2.0
         settingButton.layer.masksToBounds = true
         settingButton.clipsToBounds = true
