@@ -7,7 +7,7 @@
 -  [x] Save Username of User to the User default 
 -  [x] Deleting data form all, and from added categories simultaneously 
 -  [x] Add logo 
-- Add the Khmer language 
+- [x] Add the Khmer language 
 - Add language switching buttons 
 -  [x] Deleting data, and store to an array when the user clicks on done buttons 
 -  [x] Configure the appearance of Done button which user clicks on it 
