@@ -1,8 +1,5 @@
 # Tver - ToDoList ✌🏼
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-swift.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-grammas-recipe.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
-
-
 ![Luna headline](https://github.com/VatanaChhorn/Tver-ToDoList/blob/main/Mockup/Banner.svg)
 
 ### Features 
