@@ -3,7 +3,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-swift.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-grammas-recipe.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
 
 
-![Luna headline](https://github.com/VatanaChhorn/Luna/blob/master/Luna%20headline.png)
+![Luna headline](https://github.com/VatanaChhorn/Tver-ToDoList/blob/main/Mockup/Banner.svg)
 
 ### Features 
 
@@ -15,7 +15,13 @@
 
 ### Picture of the app 
 
-![Luna Poster](https://github.com/VatanaChhorn/Luna/blob/master/Luna%20poster.png)
+<h4> Light Mode </h4> 
+
+![First Mockup](https://github.com/VatanaChhorn/Tver-ToDoList/blob/main/Mockup/First%20Mockup.svg)
+
+<h4> Dark Mode </h4> 
+
+![Second Mockup](https://github.com/VatanaChhorn/Tver-ToDoList/blob/main/Mockup/Second%20Mockup.svg)
 
 ### Things that still working on
 
