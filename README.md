@@ -17,11 +17,11 @@
 
 <h4> Light Mode </h4> 
 
-![First Mockup](https://github.com/VatanaChhorn/Tver-ToDoList/blob/main/Mockup/First%20Mockup.svg)
+![First Mockup](https://github.com/VatanaChhorn/Tver-ToDoList/blob/main/Mockup/First%20Mockup.png)
 
 <h4> Dark Mode </h4> 
 
-![Second Mockup](https://github.com/VatanaChhorn/Tver-ToDoList/blob/main/Mockup/Second%20Mockup.svg)
+![Second Mockup](https://github.com/VatanaChhorn/Tver-ToDoList/blob/main/Mockup/Second%20Mockup.png)
 
 ### Things that still working on
 
