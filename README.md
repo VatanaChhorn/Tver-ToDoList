@@ -1,4 +1,4 @@
-# Tver - ToDoList
+# Tver - ToDoList ✌🏼
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-swift.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-grammas-recipe.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
 
@@ -7,8 +7,10 @@
 
 ### Features 
 
-- Helps the user staying on track, and avoid the distraction by the phone during working, studying, meditating, etc.  
-- Providing deep concentration mode which allows the user to be fully focusing on the tasks that the user is doing.
+- Helps the users focus on the tasks that have to accomplish each day.
+- 
+-
+-
 - No ads, and free to use. 
 - Works with or without the internet 
 - keep updating and free bug fixing.
@@ -23,31 +25,7 @@
 
 ![Second Mockup](https://github.com/VatanaChhorn/Tver-ToDoList/blob/main/Mockup/Second%20Mockup.png)
 
-### Things that still working on
-
-- [x] Updating extreme mode function
-- [x] Fix some typo in the app 
-- [x] Rearrange the layers of UI Design. 
-
-### Language and Pods 
-
-- This app is written in Swift ( SwiftUI ) 
-- Using third party libraries such as AlertX, Sliders, Lotties, and PopupView. 
-
-### Connect with me: :octocat:
-
-
-<p align="left">
-<a href="https://www.instagram.com/vatana.chhorn/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" alt="kushal.bhanot" height="40" width="40" /></a> &nbsp;&nbsp;
-<a href="https://twitter.com/vatana_chhorn" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="bhanot_kushal" height="40" width="40" /></a> &nbsp;&nbsp;
-<a href="https://www.facebook.com/vatan4c" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/facebook.svg" alt="kushal.bhanot.98" height="40" width="40" /></a> &nbsp;&nbsp;
-</p>
-
-
-**Do ⭐ my repository if you find my project interesting, at least your star could make someone's day.**  
-
-
-<h3> Things to be working on </h3> 
+<h3> Things that have been working on </h3> 
 
 -  [x] Checking the performing segue identifier 
 -  [x] Adding Image Picker Function 
@@ -57,9 +35,31 @@
 - [x] Add the Khmer language 
 - Add language switching buttons 
 -  [x] Deleting data, and store to an array when the user clicks on done buttons 
--  [x] Configure the appearance of Done button which user clicks on it 
--  Updating the UI to more the modern interface.
+-  [x] Configure the appearance of Done button when user clicks on it 
+-  [x] Updating the UI.
 
 <h3> Known issues </h3> 
+
 - Nil  
 
+### Language and Pods 
+
+<h4> langauge </h4> 
+
+- This app is written in Swift ( UIKIT )
+
+<h4> Pods </h4> 
+
+- IQKeyboardManagerSwift
+- TransitionButton
+- RealmSwift
+
+### Connect with me: :octocat:
+
+<p align="left">
+<a href="https://www.instagram.com/vatana.chhorn/" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" alt="kushal.bhanot" height="40" width="40" /></a> &nbsp;&nbsp;
+<a href="https://twitter.com/vatana_chhorn" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="bhanot_kushal" height="40" width="40" /></a> &nbsp;&nbsp;
+<a href="https://www.facebook.com/vatan4c" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/facebook.svg" alt="kushal.bhanot.98" height="40" width="40" /></a> &nbsp;&nbsp;
+</p>
+
+**Do ⭐ my repository if you find my project interesting, at least your star could make someone's day.**  
