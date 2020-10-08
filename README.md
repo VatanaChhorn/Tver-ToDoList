@@ -5,9 +5,6 @@
 ### Features 
 
 - Helps the users focus on the tasks that have to accomplish each day.
-- 
--
--
 - No ads, and free to use. 
 - Works with or without the internet 
 - keep updating and free bug fixing.
